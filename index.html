@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="ru"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Аминский Сергей — BI-Аналитик данных</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: oklch(9% 0.012 250);
+    --bg2: oklch(13% 0.012 250);
+    --bg3: oklch(17% 0.012 250);
+    --border: oklch(25% 0.015 250);
+    --text: oklch(90% 0.008 250);
+    --text-dim: oklch(68% 0.010 250);
+    --accent: oklch(62% 0.16 210);
+    --accent2: oklch(70% 0.13 55);
+    --font: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 60px;
+    background: oklch(9% 0.012 250 / 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo { font-size: 14px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
+  .nav-links { display: flex; gap: 36px; }
+  .nav-links a { font-size: 13px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--text); }
+
+  .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; position: relative; overflow: hidden; }
+  .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 120px 60px 80px; position: relative; z-index: 2; }
+  .hero-tag { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent); padding: 5px 14px; border-radius: 2px; margin-bottom: 32px; width: fit-content; }
+  .hero-name { font-size: clamp(40px, 5vw, 72px); font-weight: 700; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 8px; }
+  .hero-name span { color: var(--accent); }
+  .hero-role { font-size: clamp(16px, 2vw, 22px); font-weight: 300; color: var(--text-dim); letter-spacing: 0.04em; margin-bottom: 32px; }
+  .hero-desc { font-size: 16px; line-height: 1.8; color: var(--text-dim); max-width: 480px; margin-bottom: 48px; }
+  .hero-stats { display: flex; gap: 48px; margin-bottom: 48px; }
+  .stat-num { font-size: 48px; font-weight: 700; color: var(--text); letter-spacing: -0.03em; }
+  .stat-num span { color: var(--accent); }
+  .stat-label { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); margin-top: 4px; }
+  .hero-cta { display: flex; gap: 16px; }
+  .btn-primary { background: var(--accent); color: oklch(9% 0.012 250); font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 14px 28px; border: none; border-radius: 2px; cursor: pointer; text-decoration: none; transition: opacity 0.2s; }
+  .btn-primary:hover { opacity: 0.85; }
+  .btn-secondary { background: transparent; color: var(--text); font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 14px 28px; border: 1px solid var(--border); border-radius: 2px; cursor: pointer; text-decoration: none; transition: border-color 0.2s, color 0.2s; }
+  .btn-secondary:hover { border-color: var(--text-dim); }
+  .hero-right { position: relative; overflow: hidden; }
+  .hero-photo { width: 100%; height: 100%; object-fit: cover; object-position: 58% 15%; display: block; filter: grayscale(15%) contrast(1.05); }
+  .hero-photo-overlay { position: absolute; inset: 0; background: linear-gradient(to right, var(--bg) 0%, transparent 30%), linear-gradient(to top, var(--bg) 0%, transparent 25%); }
+
+  section { padding: 100px 60px; }
+  .section-tag { font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+  .section-title { font-size: clamp(28px, 3vw, 42px); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 60px; }
+  .section-title em { font-style: normal; color: var(--accent); }
+
+  .about { background: var(--bg2); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .about-photo-wrap { position: relative; }
+  .about-photo { width: 100%; aspect-ratio: 16/10; object-fit: cover; object-position: center 30%; border-radius: 2px; filter: grayscale(10%); }
+  .about-photo-accent { position: absolute; top: -12px; left: -12px; width: 60px; height: 60px; border-top: 2px solid var(--accent); border-left: 2px solid var(--accent); }
+  .about-photo-accent2 { position: absolute; bottom: -12px; right: -12px; width: 60px; height: 60px; border-bottom: 2px solid var(--accent); border-right: 2px solid var(--accent); }
+  .about-text p { font-size: 16px; line-height: 1.85; color: var(--text-dim); margin-bottom: 20px; }
+  .about-text p strong { color: var(--text); font-weight: 600; }
+  .about-info { margin-top: 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px 32px; }
+  .about-info-label { font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+  .about-info-value { font-size: 14px; color: var(--text); }
+
+  .experience { background: var(--bg); }
+  .exp-grid { display: flex; flex-direction: column; gap: 0; }
+  .exp-item { display: grid; grid-template-columns: 200px 1px 1fr; gap: 0 40px; padding: 48px 0; border-bottom: 1px solid var(--border); }
+  .exp-item:last-child { border-bottom: none; }
+  .exp-date { font-size: 13px; color: var(--text-dim); padding-top: 4px; text-align: right; }
+  .exp-date strong { display: block; font-weight: 600; color: var(--text); font-size: 14px; margin-bottom: 4px; }
+  .exp-line { background: var(--border); position: relative; }
+  .exp-line::before { content: ''; position: absolute; top: 8px; left: 50%; transform: translateX(-50%); width: 9px; height: 9px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 0 3px var(--bg); }
+  .exp-company { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+  .exp-role { font-size: 20px; font-weight: 600; margin-bottom: 6px; letter-spacing: -0.01em; }
+  .exp-object { font-size: 13px; color: var(--accent2); margin-bottom: 20px; font-style: italic; }
+  .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .exp-bullets li { font-size: 15px; color: var(--text-dim); padding-left: 18px; position: relative; line-height: 1.75; }
+  .exp-bullets li::before { content: '—'; position: absolute; left: 0; color: var(--accent); }
+  .exp-bullets li strong { color: var(--text); font-weight: 500; }
+
+  /* ── SKILLS ── */
+  .skills { background: var(--bg2); }
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .skill-group { background: var(--bg3); padding: 36px 32px; }
+  .skill-group-title { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-tag { font-size: 13px; font-weight: 500; background: var(--bg); color: var(--text-dim); padding: 7px 14px; border-radius: 2px; border: 1px solid var(--border); transition: border-color 0.2s, color 0.2s; }
+  .skill-tag:hover { border-color: var(--accent); color: var(--text); }
+  .skill-tag.accent { border-color: oklch(62% 0.16 210 / 0.4); color: var(--accent); }
+  .skill-note { margin-top: 16px; font-size: 12px; color: var(--accent); line-height: 1.6; opacity: 0.9; font-style: italic; padding-top: 12px; border-top: 1px solid var(--border); }
+
+  /* AI skill group spanning full width */
+  .skill-group.ai-group { grid-column: 1 / -1; background: oklch(13% 0.02 210 / 0.4); border-left: 3px solid var(--accent); }
+
+  .objects { background: var(--bg); }
+  .obj-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .obj-card { background: var(--bg2); padding: 36px; position: relative; overflow: hidden; transition: background 0.2s; }
+  .obj-card:hover { background: var(--bg3); }
+  .obj-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--accent); opacity: 0; transition: opacity 0.2s; }
+  .obj-card:hover::before { opacity: 1; }
+  .obj-year { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+  .obj-name { font-size: 16px; font-weight: 600; margin-bottom: 8px; line-height: 1.4; }
+  .obj-desc { font-size: 14px; color: var(--text-dim); line-height: 1.75; }
+
+  .contact { background: var(--bg2); text-align: center; }
+  .contact-inner { max-width: 640px; margin: 0 auto; }
+  .contact .section-tag { justify-content: center; display: flex; }
+  .contact-subtitle { font-size: 16px; color: var(--text-dim); margin-bottom: 48px; line-height: 1.8; }
+  .contact-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 48px; }
+  .contact-link { display: flex; align-items: center; gap: 10px; background: var(--bg3); border: 1px solid var(--border); color: var(--text); text-decoration: none; padding: 14px 24px; border-radius: 2px; font-size: 14px; font-weight: 500; transition: border-color 0.2s; }
+  .contact-link:hover { border-color: var(--accent); }
+  .contact-link-icon { color: var(--accent); font-size: 18px; }
+  .contact-avail { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); }
+  .contact-avail span { display: inline-block; width: 8px; height: 8px; background: oklch(65% 0.18 145); border-radius: 50%; margin-right: 8px; vertical-align: middle; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+  footer { padding: 28px 60px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--text-dim); }
+
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; flex-direction: column; align-items: flex-start; gap: 10px; }
+    .nav-links { overflow-x: auto; gap: 0; white-space: nowrap; scrollbar-width: none; flex-wrap: nowrap; width: 100%; }
+    .nav-links a { font-size: 13px; padding: 6px 14px; border-radius: 20px; background: rgba(255,255,255,0.06); flex-shrink: 0; margin-right: 8px; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 100px 24px 60px; }
+    .hero-right { height: 90vw; }
+    section { padding: 60px 24px; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .exp-grid { flex-direction: row; overflow-x: scroll; scroll-snap-type: x mandatory; scrollbar-width: none; }
+    .exp-item { min-width: 100% !important; flex-shrink: 0; grid-template-columns: 1fr !important; gap: 8px; scroll-snap-align: start; border-bottom: none; }
+    .exp-date { text-align: left; }
+    .exp-line { display: none; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .skill-group.ai-group { grid-column: 1; }
+    .obj-grid { grid-template-columns: 1fr; }
+    footer { padding: 20px 24px; flex-direction: column; gap: 8px; }
+    .hero-stats { gap: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">С. Аминский</div>
+  <div class="nav-links">
+    <a href="#about">Обо мне</a>
+    <a href="#experience">Опыт</a>
+    <a href="#skills">Навыки</a>
+    <a href="#analytics">Аналитика</a>
+    <a href="#ai-tools">AI-инструменты</a>
+    <a href="#objects">Проекты</a>
+    <a href="#contact">Контакты</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <div class="hero-tag">BI-Аналитик данных · АЭС «Аккую»</div>
+    <h1 class="hero-name">Сергей<br><span>Аминский</span></h1>
+    <p class="hero-role">Data Analyst · Power BI · 14 лет опыта</p>
+    <p class="hero-desc">Превращаю сырые производственные данные в управляемые аналитические системы. Power BI · Power Query (M) · Pivot (DAX) — на объектах атомной отрасли.</p>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">14<span>+</span></div>
+        <div class="stat-label">лет опыта</div>
+      </div>
+      <div>
+        <div class="stat-num">10<span>×</span></div>
+        <div class="stat-label">ускорение отчётности</div>
+      </div>
+    </div>
+    <div class="hero-cta">
+      <a href="#contact" class="btn-primary">Связаться</a>
+      <a href="#experience" class="btn-secondary">Смотреть опыт</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="photo_hero.jpg" class="hero-photo" alt="Сергей Аминский">
+    <div class="hero-photo-overlay"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-tag">Обо мне</div>
+  <div class="section-title">От инженера<br><em>до аналитика данных</em></div>
+  <div class="about-grid">
+    <div class="about-photo-wrap">
+      <img src="uploads/IMG_4469.JPG" class="about-photo" alt="На объекте АЭС Аккую">
+      <div class="about-photo-accent"></div>
+      <div class="about-photo-accent2"></div>
+    </div>
+    <div class="about-text">
+      <p><strong>14 лет в строительстве и аналитике</strong> — от проектировщика слаботочных систем до BI-аналитика на атомной стройке. Понимаю процессы изнутри и строю отчётность, которой доверяют.</p>
+      <p>Сейчас — АЭС «Аккую», Турция. Автоматизирую обработку производственных и финансовых данных через <strong>Power BI, Power Query, DAX</strong>. Ускорение подготовки — в 10 раз.</p>
+      <div class="about-info">
+        <div class="about-info-item">
+          <div class="about-info-label">Местонахождение</div>
+          <div class="about-info-value">Москва / Турция</div>
+        </div>
+        <div class="about-info-item">
+          <div class="about-info-label">Формат</div>
+          <div class="about-info-value">Гибрид, офис, удалённо</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience" id="experience">
+  <div class="section-tag">Опыт работы</div>
+  <div class="section-title"><em>14 лет</em><br>в отрасли</div>
+  <div class="exp-grid">
+    <div class="exp-item">
+      <div class="exp-date"><strong>окт 2024 — н.в.</strong>1 год 7 мес.</div>
+      <div class="exp-line"></div>
+      <div class="exp-content">
+        <div class="exp-company">TITAN2 IC İÇTAŞ İNŞAAT</div>
+        <div class="exp-role">Аналитик данных / Главный специалист</div>
+        <div class="exp-object">АЭС «Аккую», Турция</div>
+        <ul class="exp-bullets">
+          <li>ETL-процессы, Power BI, Power Query (M), DAX, VBA — единая аналитическая база для всего проекта</li>
+          <li>Ускорение подготовки — <strong>в 10 раз</strong></li>
+          <li>Валидация физических объёмов субподрядчиков, контроль данных КС-6а</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-date"><strong>окт 2022 — сен 2024</strong>2 года</div>
+      <div class="exp-line"></div>
+      <div class="exp-content">
+        <div class="exp-company">INTENS İNŞAAT A.Ş.</div>
+        <div class="exp-role">Главный специалист / Аналитик инженерных данных</div>
+        <div class="exp-object">АЭС «Аккую», Турция — ж/б тоннели, трубопроводы SUBOR</div>
+        <ul class="exp-bullets">
+          <li>Анализ РД, разработка разделительных ведомостей, сметное сопровождение</li>
+          <li><strong>3D-моделирование</strong> ж/б тоннелей (Revit), координация данных между отделами</li>
+          <li>Разработка ППР: тоннели, трубопроводы SUBOR, здание ВЗиС</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-date"><strong>июл 2015 — окт 2022</strong>7 лет 4 мес.</div>
+      <div class="exp-line"></div>
+      <div class="exp-content">
+        <div class="exp-company">АО «Индивидуальные бизнес решения» · Москва</div>
+        <div class="exp-role">Ведущий инженер ПТО / Инженер-аналитик проектов</div>
+        <div class="exp-object">Транспортная, промышленная, нефтегазовая инфраструктура</div>
+        <ul class="exp-bullets">
+          <li>Управление отделом ПТО — <strong>6 человек</strong>; РД, ППР, ИД для нефтегазовых и транспортных объектов</li>
+          <li>Финансовые показатели проектов: бюджет, отклонения факта от плана, защита объёмов</li>
+          <li>Мост через р. Обь (Новосибирск) · Обход Хабаровска · ГПЗ Оренбург · промыслы «Медвежье»</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-date"><strong>фев 2014 — июл 2015</strong>1 год 6 мес.</div>
+      <div class="exp-line"></div>
+      <div class="exp-content">
+        <div class="exp-company">ООО «Комдиагностика» · Москва</div>
+        <div class="exp-role">Инженер-проектировщик / Аналитик технических систем</div>
+        <div class="exp-object">Нефтегаз, нефтехимия, энергетика</div>
+        <ul class="exp-bullets">
+          <li>Системы вибромониторинга и диагностики для нефтегаза и энергетики</li>
+          <li><strong>Останкинская башня</strong> — система контроля натяжения канатной арматуры</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-date"><strong>мар 2013 — фев 2014</strong>1 год</div>
+      <div class="exp-line"></div>
+      <div class="exp-content">
+        <div class="exp-company">АО «ОСИ-Системный интегратор» · Оренбург</div>
+        <div class="exp-role">Инженер-проектировщик слаботочных систем</div>
+        <div class="exp-object">Безопасность, связь, автоматизация</div>
+        <ul class="exp-bullets">
+          <li>РД по системам АПС, СКУД, СКС, СОТ · объекты «Газпрома» в Оренбурге</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="exp-dots" id="expDots"></div>
+</section>
+<script>
+(function(){
+  var grid=document.querySelector(".exp-grid");
+  var dc=document.getElementById("expDots");
+  if(!grid||!dc)return;
+  var items=grid.querySelectorAll(".exp-item");
+  function setWidths(){ var w=grid.offsetWidth; items.forEach(function(item){ item.style.minWidth=w+"px"; item.style.maxWidth=w+"px"; }); }
+  setWidths(); window.addEventListener("resize",setWidths);
+  var dots=[];
+  items.forEach(function(_,i){ var d=document.createElement("span"); d.className="exp-dot"+(i===0?" active":""); dc.appendChild(d); dots.push(d); });
+  grid.addEventListener("scroll",function(){ var idx=Math.round(grid.scrollLeft/grid.offsetWidth); dots.forEach(function(d,i){d.className="exp-dot"+(i===idx?" active":"");}); },{passive:true});
+})();
+</script>
+
+<!-- SKILLS -->
+<section class="skills" id="skills">
+  <div class="section-tag">Навыки</div>
+  <div class="section-title">Инструменты<br><em>и компетенции</em></div>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <div class="skill-group-title">BI и аналитика данных</div>
+      <div class="skill-tags">
+        <span class="skill-tag accent">Power BI</span>
+        <span class="skill-tag accent">Power Query (M)</span>
+        <span class="skill-tag accent">Power Pivot (DAX)</span>
+        <span class="skill-tag">Excel</span>
+        <span class="skill-tag">VBA</span>
+        <span class="skill-tag">ETL</span>
+        <span class="skill-tag">Аналитические исследования</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Инженерия и строительство</div>
+      <div class="skill-tags">
+        <span class="skill-tag">AutoCAD</span>
+        <span class="skill-tag">Autodesk Revit</span>
+        <span class="skill-tag">РД / ИД / ППР</span>
+        <span class="skill-tag">Сметная документация</span>
+        <span class="skill-tag">КС-2 / КС-6а</span>
+        <span class="skill-tag">3D-моделирование</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Управление и коммуникация</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Управление отделом (6 чел.)</span>
+        <span class="skill-tag">Организационные навыки</span>
+        <span class="skill-tag">Техническая переписка</span>
+        <span class="skill-tag">Русский (родной)</span>
+        <span class="skill-tag">English B2</span>
+      </div>
+    </div>
+    <!-- NEW: AI-augmented section spanning full width -->
+    <div class="skill-group ai-group">
+      <div class="skill-group-title">AI-augmented аналитик</div>
+      <div class="skill-tags">
+        <span class="skill-tag accent">ChatGPT / Claude</span>
+        <span class="skill-tag accent">Cursor / Copilot</span>
+        <span class="skill-tag accent">Промпт-инжиниринг</span>
+        <span class="skill-tag">Генерация кода и DAX</span>
+        <span class="skill-tag">Автоматизация рутины</span>
+        <span class="skill-tag">ETL через AI</span>
+        <span class="skill-tag">GitHub Copilot</span>
+        <span class="skill-tag">AI-ассистируемый анализ</span>
+      </div>
+      <div class="skill-note">ИИ заменяет целую команду аналитиков — реализую проекты уровня отдела самостоятельно, без раздутого штата</div>
+    </div>
+  </div>
+</section>
+
+<!-- ANALYTICS DEEP DIVE -->
+<section class="analytics" id="analytics">
+  <div class="section-tag">Аналитика и разработка</div>
+  <div class="section-title">Данные как<br><em>инструмент управления</em></div>
+
+  <div class="analytics-stack">
+    <div class="stack-col">
+      <div class="stack-col-title">Инструмент</div>
+      <div class="stack-col-title">Уровень</div>
+      <div class="stack-col-title stack-right">Применение</div>
+    </div>
+    <div class="stack-item featured">
+      <div class="stack-name">Power BI</div>
+      <div class="stack-bar-wrap"><div class="stack-bar" style="width:75%"></div><span>Middle+</span></div>
+      <div class="stack-use">Дашборды, матрицы, слайсеры, публикация</div>
+    </div>
+    <div class="stack-item featured">
+      <div class="stack-name">Power Query (M)</div>
+      <div class="stack-bar-wrap"><div class="stack-bar" style="width:78%"></div><span>Middle+</span></div>
+      <div class="stack-use">ETL, очистка, свёртывание, кодогенерация KKS</div>
+    </div>
+    <div class="stack-item featured">
+      <div class="stack-name">DAX</div>
+      <div class="stack-bar-wrap"><div class="stack-bar" style="width:70%"></div><span>Middle</span></div>
+      <div class="stack-use">CALCULATE, FILTER, CONTAINSSTRING, COALESCE</div>
+    </div>
+    <div class="stack-item">
+      <div class="stack-name">Excel / Power Pivot</div>
+      <div class="stack-bar-wrap"><div class="stack-bar" style="width:88%"></div><span>Advanced</span></div>
+      <div class="stack-use">ETL, сводные таблицы, формулы с множественными условиями</div>
+    </div>
+    <div class="stack-item">
+      <div class="stack-name">VBA</div>
+      <div class="stack-bar-wrap"><div class="stack-bar" style="width:40%"></div><span>Базовый</span></div>
+      <div class="stack-use">Автоматизация рутинных операций</div>
+    </div>
+    <div class="stack-item">
+      <div class="stack-name">SQL / PostgreSQL</div>
+      <div class="stack-bar-wrap"><div class="stack-bar" style="width:35%"></div><span>Базовый</span></div>
+      <div class="stack-use">SELECT, WHERE, GROUP BY, JOIN</div>
+    </div>
+    <div class="stack-item">
+      <div class="stack-name">Python / pandas</div>
+      <div class="stack-bar-wrap"><div class="stack-bar" style="width:30%"></div><span>Базовый</span></div>
+      <div class="stack-use">ETL, обработка Excel, базовые скрипты</div>
+    </div>
+  </div>
+
+  <!-- PROJECT DIAGRAMS -->
+  <div class="proj-diagrams">
+    <div class="proj-header-label">Презентация реализованных мною проектов</div>
+    <div class="proj-svg-wrap">
+      <img src="uploads/portfolio_projects_v4.svg" alt="Схемы проектов" style="width:100%;display:block;filter:invert(0.88) hue-rotate(180deg) brightness(1.15) saturate(0.85) contrast(0.92);">
+    </div>
+  </div>
+
+  <div class="ana-value">
+    <div class="ana-value-item">
+      <div class="ana-value-icon">◈</div>
+      <div class="ana-value-title">Инженер + аналитик</div>
+      <div class="ana-value-text">14 лет в строительстве дают понимание процессов изнутри — строю отчётность, которой доверяют</div>
+    </div>
+    <div class="ana-value-item">
+      <div class="ana-value-icon">◈</div>
+      <div class="ana-value-title">Атомный объект</div>
+      <div class="ana-value-text">Опыт работы на АЭС с максимальными требованиями к точности данных — нулевая толерантность к ошибкам</div>
+    </div>
+    <div class="ana-value-item">
+      <div class="ana-value-icon">◈</div>
+      <div class="ana-value-title">AI-augmented аналитик</div>
+      <div class="ana-value-text">Профессионально интегрирую AI-ассистентов в рабочие процессы — от генерации кода до автоматизации отчётности. Claude, Cursor — часть ежедневной практики</div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .analytics { background: var(--bg2); }
+  .analytics-stack { margin-bottom: 64px; border: 1px solid var(--border); border-radius: 2px; overflow: hidden; }
+  .stack-col { display: grid; grid-template-columns: 200px 200px 1fr; gap: 0 32px; padding: 12px 28px; background: var(--bg3); border-bottom: 1px solid var(--border); }
+  .stack-col-title { font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); }
+  .stack-right { text-align: right; }
+  .stack-item { display: grid; grid-template-columns: 200px 200px 1fr; gap: 0 32px; padding: 16px 28px; border-bottom: 1px solid var(--border); align-items: center; transition: background 0.15s; }
+  .stack-item:last-child { border-bottom: none; }
+  .stack-item:hover { background: var(--bg3); }
+  .stack-item.featured { background: oklch(13% 0.02 210 / 0.5); }
+  .stack-name { font-size: 14px; font-weight: 600; color: var(--text); }
+  .stack-bar-wrap { display: flex; align-items: center; gap: 12px; }
+  .stack-bar-wrap span { font-size: 11px; font-weight: 600; color: var(--accent); white-space: nowrap; }
+  .stack-bar { height: 4px; background: var(--accent); border-radius: 2px; flex: 0 0 auto; }
+  .stack-use { font-size: 13px; color: var(--text-dim); text-align: right; }
+  .ana-projects { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 2px; }
+  .proj-header-label { font-size: 15px; color: var(--text-dim); padding: 20px 32px; background: var(--bg3); border-left: 3px solid var(--accent); margin-bottom: 2px; }
+  .proj-diagrams { margin-bottom: 2px; }
+  .proj-caption { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 2px; }
+  .proj-caption-item { background: var(--bg3); padding: 28px 32px; border-bottom: 3px solid; }
+  .proj-caption-item:first-child { border-color: oklch(55% 0.14 220); }
+  .proj-caption-item:last-child { border-color: oklch(55% 0.16 40); }
+  .proj-caption-tag { font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; border: 1px solid; padding: 3px 10px; border-radius: 2px; display: inline-block; margin-bottom: 12px; }
+  .proj-caption-title { font-size: 17px; font-weight: 600; margin-bottom: 10px; line-height: 1.3; }
+  .proj-caption-desc { font-size: 14px; color: var(--text-dim); line-height: 1.75; }
+  .proj-svg-wrap { background: var(--bg); padding: 32px; }
+  @media (max-width: 900px) { .proj-caption { grid-template-columns: 1fr; } }
+  .ana-card { background: var(--bg3); padding: 40px; border-bottom: 3px solid var(--accent); }
+  .ana-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; flex-wrap: wrap; gap: 8px; }
+  .ana-tag { font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
+  .ana-tech { font-size: 11px; color: var(--text-dim); background: var(--bg2); padding: 3px 10px; border-radius: 2px; }
+  .ana-title { font-size: 20px; font-weight: 600; margin-bottom: 12px; line-height: 1.3; }
+  .ana-desc { font-size: 14px; color: var(--text-dim); line-height: 1.75; margin-bottom: 28px; }
+  .ana-achievements { display: flex; gap: 32px; margin-bottom: 28px; padding: 20px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .ana-ach-num { font-size: 28px; font-weight: 700; color: var(--accent); letter-spacing: -0.02em; }
+  .ana-ach-label { font-size: 11px; color: var(--text-dim); margin-top: 2px; }
+  .ana-schema { display: flex; align-items: center; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+  .schema-node { font-size: 11px; font-weight: 600; padding: 7px 14px; border-radius: 2px; white-space: nowrap; }
+  .schema-node.fact { background: oklch(62% 0.16 210 / 0.15); border: 1px solid var(--accent); color: var(--accent); }
+  .schema-node.ref { background: var(--bg2); border: 1px solid var(--border); color: var(--text-dim); font-size: 10px; padding: 5px 10px; }
+  .schema-lines { display: flex; flex-direction: column; gap: 4px; }
+  .schema-line { width: 20px; height: 1px; background: var(--border); }
+  .schema-refs { display: flex; flex-direction: column; gap: 6px; }
+  .ana-flow { display: flex; align-items: center; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+  .flow-sources { display: flex; flex-wrap: wrap; gap: 4px; }
+  .flow-src { font-size: 10px; font-weight: 600; padding: 4px 8px; background: var(--bg2); border: 1px solid var(--border); color: var(--text-dim); border-radius: 2px; }
+  .flow-arrow { color: var(--accent); font-size: 18px; }
+  .flow-etl { font-size: 11px; font-weight: 600; padding: 10px 16px; background: oklch(62% 0.16 210 / 0.12); border: 1px solid var(--accent); color: var(--accent); border-radius: 2px; text-align: center; line-height: 1.4; }
+  .flow-etl small { font-weight: 400; opacity: 0.7; display: block; font-size: 9px; }
+  .flow-result { font-size: 11px; font-weight: 600; padding: 10px 14px; background: oklch(70% 0.13 55 / 0.12); border: 1px solid var(--accent2); color: var(--accent2); border-radius: 2px; text-align: center; line-height: 1.4; }
+  .ana-value { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 2px; }
+  .ana-value-item { background: var(--bg); padding: 36px 32px; }
+  .ana-value-icon { font-size: 22px; color: var(--accent); margin-bottom: 16px; line-height: 1; }
+  .ana-value-title { font-size: 15px; font-weight: 600; margin-bottom: 10px; }
+  .ana-value-text { font-size: 14px; color: var(--text-dim); line-height: 1.75; }
+  @media (max-width: 900px) {
+    .stack-col { display: none; }
+    .stack-item { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; padding: 16px 20px; }
+    .stack-use { text-align: left; font-size: 12px; }
+    .ana-projects { grid-template-columns: 1fr; }
+    .ana-value { grid-template-columns: 1fr; }
+  }
+</style>
+
+<!-- AI TOOLS -->
+<section class="ai-tools" id="ai-tools">
+  <div class="section-tag">Инструменты</div>
+  <div class="section-title">AI-assisted<br><em>рабочие процессы</em></div>
+  <div class="ai-grid">
+    <div class="ai-card">
+      <div class="ai-tool-name">Claude Code Desktop</div>
+      <div class="ai-tool-desc">Написание скриптов, работа с файлами на удалённом сервере или ПК напрямую из терминала</div>
+    </div>
+    <div class="ai-card">
+      <div class="ai-tool-name">Claude Code Mobile <span class="ai-tag">iOS</span></div>
+      <div class="ai-tool-desc">Работа с мобильного устройства, синхронизация проекта с удалённым сервером через GitHub</div>
+    </div>
+    <div class="ai-card">
+      <div class="ai-tool-name">Claude Connect <span class="ai-tag">MCP</span></div>
+      <div class="ai-tool-desc">Интеграции с Gmail, Google Drive, Google Calendar — выгрузка результатов в облако, отправка по email</div>
+    </div>
+    <div class="ai-card">
+      <div class="ai-tool-name">GitHub</div>
+      <div class="ai-tool-desc">Хранение и версионирование проектов: ветки, коммиты, синхронизация между устройствами</div>
+    </div>
+    <div class="ai-card">
+      <div class="ai-tool-name">Python · Email-скрипт</div>
+      <div class="ai-tool-desc">Автономная отправка файлов по email без UI — запуск по расписанию или по событию</div>
+    </div>
+    <div class="ai-card">
+      <div class="ai-tool-name">Cursor / Copilot</div>
+      <div class="ai-tool-desc">AI-ассистированное написание кода, генерация DAX-формул и Power Query скриптов</div>
+    </div>
+  </div>
+  <div class="ai-quote">«Опыт построения AI-assisted рабочих процессов: автоматизация ETL, генерация скриптов Python/DAX, управление проектами через Claude Code + GitHub, доставка результатов через Google Drive и email»</div>
+</section>
+<style>
+  .ai-tools { background: var(--bg); }
+  .ai-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-bottom: 40px; }
+  .ai-card { background: var(--bg2); padding: 32px 28px; position: relative; overflow: hidden; transition: background 0.2s; }
+  .ai-card:hover { background: var(--bg3); }
+  .ai-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--accent); opacity: 0; transition: opacity 0.2s; }
+  .ai-card:hover::before { opacity: 1; }
+  .ai-tool-name { font-size: 15px; font-weight: 600; margin-bottom: 10px; line-height: 1.4; display: flex; align-items: center; gap: 8px; }
+  .ai-tag { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); border: 1px solid oklch(62% 0.16 210 / 0.4); padding: 2px 7px; border-radius: 2px; }
+  .ai-tool-desc { font-size: 14px; color: var(--text-dim); line-height: 1.6; }
+  .ai-quote { border-left: 3px solid var(--accent); padding: 20px 28px; background: var(--bg2); font-size: 15px; line-height: 1.7; color: var(--text-dim); font-style: italic; }
+  @media (max-width: 900px) { .ai-grid { grid-template-columns: 1fr; } }
+</style>
+
+<!-- KEY OBJECTS -->
+<section class="objects" id="objects">
+  <div class="section-tag">Ключевые объекты</div>
+  <div class="section-title">Проекты,<br><em>в которых участвовал</em></div>
+  <div class="obj-grid">
+    <div class="obj-card">
+      <div class="obj-year">2024 — н.в.</div>
+      <div class="obj-name">АЭС «Аккую», Турция</div>
+      <div class="obj-desc">Автоматизация аналитики и ETL-процессов на крупнейшей АЭС России за рубежом. Power BI для 25 пользователей, ускорение отчётности в 5–6 раз.</div>
+    </div>
+    <div class="obj-card">
+      <div class="obj-year">2022–2024</div>
+      <div class="obj-name">Тоннели и трубопроводы АЭС «Аккую»</div>
+      <div class="obj-desc">Анализ РД, 3D-моделирование ж/б тоннелей, разработка ППР, координация данных между отделами при защите объёмов.</div>
+    </div>
+    <div class="obj-card">
+      <div class="obj-year">2019–2021</div>
+      <div class="obj-name">Мостовой переход через р. Обь, Новосибирск</div>
+      <div class="obj-desc">Разработка РД по инженерным системам. Сопровождение ИД по 7 разделам: трамвайные пути, контактная сеть, ВОЛС, электроснабжение.</div>
+    </div>
+    <div class="obj-card">
+      <div class="obj-year">2017–2019</div>
+      <div class="obj-name">ГПЗ «Газпром», г. Оренбург</div>
+      <div class="obj-desc">Расчёт бюджета этапов, разработка ППР и ИД по системе оповещения и громкой связи.</div>
+    </div>
+    <div class="obj-card">
+      <div class="obj-year">2016–2018</div>
+      <div class="obj-name">Газовые промыслы Медвежьего НГКМ</div>
+      <div class="obj-desc">Разработка инструкций по гидравлическим и пневматическим испытаниям, ППР и ИД по системам ВОЛС, АСУ ТП, СПД, электроснабжения.</div>
+    </div>
+    <div class="obj-card">
+      <div class="obj-year">2015</div>
+      <div class="obj-name">Останкинская башня, Москва</div>
+      <div class="obj-desc">Система контроля величины натяжения канатной арматуры конструкции башни — уникальный объект культурного наследия.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="section-tag">Контакты</div>
+    <div class="section-title" style="margin-bottom:20px">Открыт<br><em>к предложениям</em></div>
+    <p class="contact-subtitle">Рассматриваю позиции BI-аналитика в строительстве, энергетике или промышленности. Готов к работе в России, Турции или Венгрии.</p>
+    <div class="contact-links">
+      <a href="tel:+79878515390" class="contact-link"><span class="contact-link-icon">☎</span>+7 (987) 851-53-90</a>
+      <a href="https://wa.me/79878515390" class="contact-link" target="_blank"><span class="contact-link-icon">💬</span>WhatsApp</a>
+      <a href="mailto:art56000@yandex.ru" class="contact-link"><span class="contact-link-icon">✉</span>art56000@yandex.ru</a>
+    </div>
+    <div class="contact-avail"><span></span>Открыт к новым предложениям</div>
+  </div>
+</section>
+
+<footer>
+  <div>© 2026 Аминский Сергей Сергеевич</div>
+  <div>BI-Аналитик данных · Москва</div>
+</footer>
+
+<style>
+  .exp-dots { display: flex; justify-content: center; gap: 8px; padding-top: 24px; }
+  .exp-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--border); transition: background 0.3s; cursor: pointer; }
+  .exp-dot.active { background: var(--accent); }
+  @media (min-width: 901px) { .exp-dots { display: none; } }
+</style>
+
+</body></html>
