@@ -768,15 +768,15 @@
   .hero-tag { position: relative; overflow: hidden; }
   .hero-tag::after { content: ''; position: absolute; left: -100%; top: 0; width: 60%; height: 100%; background: linear-gradient(to right, transparent, rgba(56,162,204,0.18), transparent); animation: shimmer 3.5s ease-in-out infinite 1.2s; pointer-events: none; }
   /* Shimmer on skill tags (hover) */
-  @keyframes shimmer-swipe { 0% { transform: translateX(-150%); } 100% { transform: translateX(350%); } }
-  .skill-tag { position: relative; overflow: hidden; }
-  .skill-tag::after { content: ''; position: absolute; top: 0; left: 0; width: 45%; height: 100%; background: linear-gradient(to right, transparent, rgba(56,162,204,0.35), transparent); pointer-events: none; transform: translateX(-150%); }
-  .skill-tag:hover::after { animation: shimmer-swipe 0.75s ease-in-out; }
+  @keyframes shimmer-swipe { 0% { transform: translateX(-200%) skewX(-15deg); } 100% { transform: translateX(400%) skewX(-15deg); } }
+  .skill-tag { position: relative !important; overflow: hidden !important; }
+  .skill-tag::after { content: ''; position: absolute; top: -10%; left: 0; width: 55%; height: 120%; background: linear-gradient(105deg, transparent 20%, rgba(120,210,255,0.55) 50%, transparent 80%); pointer-events: none; transform: translateX(-200%) skewX(-15deg); z-index: 1; }
+  .skill-tag:hover::after { animation: shimmer-swipe 0.85s ease-in-out forwards; }
 
   /* Shimmer on section labels (hover) */
-  .section-tag { position: relative; overflow: hidden; display: inline-block; }
-  .section-tag::after { content: ''; position: absolute; top: 0; left: 0; width: 45%; height: 100%; background: linear-gradient(to right, transparent, rgba(56,162,204,0.4), transparent); pointer-events: none; transform: translateX(-150%); }
-  .section-tag:hover::after { animation: shimmer-swipe 0.9s ease-in-out; }
+  .section-tag { position: relative !important; overflow: hidden !important; display: inline-block; }
+  .section-tag::after { content: ''; position: absolute; top: -10%; left: 0; width: 55%; height: 120%; background: linear-gradient(105deg, transparent 20%, rgba(120,210,255,0.6) 50%, transparent 80%); pointer-events: none; transform: translateX(-200%) skewX(-15deg); z-index: 1; }
+  .section-tag:hover::after { animation: shimmer-swipe 1s ease-in-out forwards; }
 </style>
 
 <script>
