@@ -855,12 +855,17 @@
   }, {passive: true});
 })();
 
-// Shimmer on tap (touch devices)
 (function(){
   // Random shimmer delays so tags don't all sweep in sync
   document.querySelectorAll('.skill-tag, .section-tag').forEach(function(el){
     el.style.setProperty('--sd', (Math.random() * 4).toFixed(2) + 's');
   });
+  // Half-size diagrams on desktop
+  if (window.innerWidth >= 901) {
+    document.querySelectorAll('.proj-svg').forEach(function(svg){
+      svg.style.width = '50%';
+    });
+  }
 })();
 </script>
 </body></html>
