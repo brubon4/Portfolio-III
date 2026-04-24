@@ -724,7 +724,13 @@
   .exp-dot.active { background: var(--accent); }
   @media (min-width: 901px) { .exp-dots { display: none; } }
   .proj-svg { width: 100%; }
-  @media (min-width: 901px) { .proj-svg { width: 50%; } }
+  @media (min-width: 901px) {
+    .svg-proj {
+      width: 50%;
+      margin: 0 auto;
+    }
+    .proj-svg { width: 100%; }
+  }
 </style>
 
 
@@ -860,12 +866,6 @@
   document.querySelectorAll('.skill-tag, .section-tag').forEach(function(el){
     el.style.setProperty('--sd', (Math.random() * 4).toFixed(2) + 's');
   });
-  // Half-size diagrams on desktop
-  if (window.innerWidth >= 901) {
-    document.querySelectorAll('.proj-svg').forEach(function(svg){
-      svg.style.width = '50%';
-    });
-  }
 })();
 </script>
 </body></html>
