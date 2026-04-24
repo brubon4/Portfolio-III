@@ -2,7 +2,7 @@
 <html lang="ru"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Аминский Сергей — BI-Аналитик данных</title>
+<title>Аминский Сергей — BI-аналитик</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -166,24 +166,27 @@
     <a href="#analytics">Аналитика</a>
     <a href="#ai-tools">AI-инструменты</a>
     <a href="#objects">Проекты</a>
+    <a href="#education">Образование</a>
     <a href="#contact">Контакты</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero" id="home">
+  <canvas id="heroCanvas"></canvas>
+  <div class="hero-scanline"></div>
   <div class="hero-left">
-    <div class="hero-tag">BI-Аналитик данных · АЭС «Аккую»</div>
+    <div class="hero-tag">BI-аналитик · АЭС «Аккую»</div>
     <h1 class="hero-name">Сергей<br><span>Аминский</span></h1>
     <p class="hero-role">Data Analyst · Power BI · 14 лет опыта</p>
     <p class="hero-desc">Превращаю сырые производственные данные в управляемые аналитические системы. Power BI · Power Query (M) · Pivot (DAX) — на объектах атомной отрасли.</p>
     <div class="hero-stats">
       <div>
-        <div class="stat-num">14<span>+</span></div>
+        <div class="stat-num"><span class="count-num" data-n="14">14</span><span>+</span></div>
         <div class="stat-label">лет опыта</div>
       </div>
       <div>
-        <div class="stat-num">10<span>×</span></div>
+        <div class="stat-num"><span class="count-num" data-n="10">10</span><span>×</span></div>
         <div class="stat-label">ускорение отчётности</div>
       </div>
     </div>
@@ -240,7 +243,7 @@
         <ul class="exp-bullets">
           <li>ETL-процессы, Power BI, Power Query (M), DAX, VBA — единая аналитическая база для всего проекта</li>
           <li>Ускорение подготовки — <strong>в 10 раз</strong></li>
-          <li>Валидация физических объёмов субподрядчиков, контроль данных КС-6а</li>
+          <li>Валидация физических объёмов субподрядчиков, контроль данных КС-6а — выявление расхождений до подписания актов, защита бюджета проекта</li>
         </ul>
       </div>
     </div>
@@ -294,6 +297,21 @@
         <div class="exp-object">Безопасность, связь, автоматизация</div>
         <ul class="exp-bullets">
           <li>РД по системам АПС, СКУД, СКС, СОТ · объекты «Газпрома» в Оренбурге</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-date"><strong>июн 2012 — мар 2013</strong>10 мес.</div>
+      <div class="exp-line"></div>
+      <div class="exp-content">
+        <div class="exp-company">ООО «Инжиниринг-проект» · Оренбург</div>
+        <div class="exp-role">Инженер-проектировщик слаботочных систем</div>
+        <div class="exp-object">Системы безопасности и связи</div>
+        <ul class="exp-bullets">
+          <li>Проектирование слаботочных систем по ГОСТ 21.1101-2013; разработка РД по системам безопасности и связи</li>
+          <li>Составление технических заданий (ТЗ) и технических условий (ТУ); анализ требований Заказчика</li>
+          <li><strong>ПО «Стрела»</strong>, Оренбург (2012) — РД по системам АПС, СОУЭ, СКЗ</li>
+          <li><strong>НПЗ «Газпром нефтехим Салавату»</strong> (2012) — РД по системам ОС, СКУД, СОТ, СС</li>
         </ul>
       </div>
     </div>
@@ -365,7 +383,7 @@
         <span class="skill-tag">GitHub Copilot</span>
         <span class="skill-tag">AI-ассистируемый анализ</span>
       </div>
-      <div class="skill-note">ИИ заменяет целую команду аналитиков — реализую проекты уровня отдела самостоятельно, без раздутого штата</div>
+      <div class="skill-note">AI-инструменты позволяют мне закрывать задачи, которые раньше требовали нескольких исполнителей</div>
     </div>
   </div>
 </section>
@@ -394,7 +412,7 @@
     <div class="stack-item featured">
       <div class="stack-name">DAX</div>
       <div class="stack-bar-wrap"><div class="stack-bar" style="width:70%"></div><span>Middle</span></div>
-      <div class="stack-use">CALCULATE, FILTER, CONTAINSSTRING, COALESCE</div>
+      <div class="stack-use">CALCULATE, FILTER, CONTAINSSTRING, COALESCE, VAR, SUMX · без time intelligence</div>
     </div>
     <div class="stack-item">
       <div class="stack-name">Excel / Power Pivot</div>
@@ -516,7 +534,7 @@
   <div class="ai-grid">
     <div class="ai-card">
       <div class="ai-tool-name">Claude Code Desktop</div>
-      <div class="ai-tool-desc">Написание скриптов, работа с файлами на удалённом сервере или ПК напрямую из терминала</div>
+      <div class="ai-tool-desc">Написание скриптов, работа с файлами на сервере напрямую из терминала. Пример: сгенерирован ETL-пайплайн для обработки данных из 11+ источников</div>
     </div>
     <div class="ai-card">
       <div class="ai-tool-name">Claude Code Mobile <span class="ai-tag">iOS</span></div>
@@ -532,14 +550,14 @@
     </div>
     <div class="ai-card">
       <div class="ai-tool-name">Python · Email-скрипт</div>
-      <div class="ai-tool-desc">Автономная отправка файлов по email без UI — запуск по расписанию или по событию</div>
+      <div class="ai-tool-desc">Автономная отправка файлов по email без UI. Пример: еженедельная выгрузка отчётов запускается по расписанию без участия пользователя</div>
     </div>
     <div class="ai-card">
       <div class="ai-tool-name">Cursor / Copilot</div>
       <div class="ai-tool-desc">AI-ассистированное написание кода, генерация DAX-формул и Power Query скриптов</div>
     </div>
   </div>
-  <div class="ai-quote">«Опыт построения AI-assisted рабочих процессов: автоматизация ETL, генерация скриптов Python/DAX, управление проектами через Claude Code + GitHub, доставка результатов через Google Drive и email»</div>
+  <div class="ai-quote">«Построил AI-assisted рабочие процессы с нуля: ETL-пайплайн на 11+ источников, генерация DAX-формул и M-скриптов, автоматическая выгрузка отчётов по расписанию, управление версиями через GitHub — всё без команды разработчиков»</div>
 </section>
 <style>
   .ai-tools { background: var(--bg); }
@@ -563,12 +581,12 @@
     <div class="obj-card">
       <div class="obj-year">2024 — н.в.</div>
       <div class="obj-name">АЭС «Аккую», Турция</div>
-      <div class="obj-desc">Автоматизация аналитики и ETL-процессов на крупнейшей АЭС России за рубежом. Power BI для 25 пользователей, ускорение отчётности в 5–6 раз.</div>
+      <div class="obj-desc">ETL-процессы: объединение данных из 11+ источников КС-6а, ускорение обработки в 10 раз. Power BI для 25 пользователей; подготовка итоговых управленческих отчётов — в 5–6 раз быстрее.</div>
     </div>
     <div class="obj-card">
       <div class="obj-year">2022–2024</div>
       <div class="obj-name">Тоннели и трубопроводы АЭС «Аккую»</div>
-      <div class="obj-desc">Анализ РД, 3D-моделирование ж/б тоннелей, разработка ППР, координация данных между отделами при защите объёмов.</div>
+      <div class="obj-desc">Результат: комплект ППР для 3 типов конструкций (тоннели, SUBOR, ВЗиС), 3D-модели в Revit переданы в производство. Разделительные ведомости позволили защитить объёмы при сдаче.</div>
     </div>
     <div class="obj-card">
       <div class="obj-year">2019–2021</div>
@@ -593,6 +611,32 @@
   </div>
 </section>
 
+<!-- EDUCATION -->
+<section class="education" id="education">
+  <div class="section-tag">Образование</div>
+  <div class="section-title">Академическая<br><em>подготовка</em></div>
+  <div class="edu-grid">
+    <div class="edu-item">
+      <div class="edu-date"><strong>2012</strong>Высшее</div>
+      <div class="edu-line"></div>
+      <div class="edu-content">
+        <div class="edu-degree">Специалист</div>
+        <div class="edu-institution">ФГБОУ ВПО «Оренбургский государственный университет»</div>
+        <div class="edu-spec">ФИТ · Вычислительные машины, комплексы, системы и сети</div>
+      </div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-date"><strong>2008</strong>СПО</div>
+      <div class="edu-line"></div>
+      <div class="edu-content">
+        <div class="edu-degree">Специалист среднего звена</div>
+        <div class="edu-institution">ГОУ СПО «Оренбургский колледж статистики, экономики и информатики»</div>
+        <div class="edu-spec">ФИТ · Вычислительные машины, комплексы, системы и сети</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="contact-inner">
@@ -603,6 +647,7 @@
       <a href="tel:+79878515390" class="contact-link"><span class="contact-link-icon">☎</span>+7 (987) 851-53-90</a>
       <a href="https://wa.me/79878515390" class="contact-link" target="_blank"><span class="contact-link-icon">💬</span>WhatsApp</a>
       <a href="mailto:art56000@yandex.ru" class="contact-link"><span class="contact-link-icon">✉</span>art56000@yandex.ru</a>
+      <a href="https://github.com/brubon4" class="contact-link" target="_blank"><span class="contact-link-icon" style="line-height:0"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013-.4c1.02.005 2.04.14 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.49 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58C20.57 21.8 24 17.3 24 12 24 5.37 18.63 0 12 0z"/></svg></span>GitHub</a>
     </div>
     <div class="contact-avail"><span></span>Открыт к новым предложениям</div>
   </div>
@@ -610,7 +655,7 @@
 
 <footer>
   <div>© 2026 Аминский Сергей Сергеевич</div>
-  <div>BI-Аналитик данных · Москва</div>
+  <div>BI-аналитик · Москва</div>
 </footer>
 
 <style>
@@ -620,4 +665,110 @@
   @media (min-width: 901px) { .exp-dots { display: none; } }
 </style>
 
+
+<style>
+  /* ── EDUCATION ── */
+  .education { background: var(--bg2); }
+  .edu-grid { display: flex; flex-direction: column; }
+  .edu-item { display: grid; grid-template-columns: 200px 1px 1fr; gap: 0 40px; padding: 48px 0; border-bottom: 1px solid var(--border); }
+  .edu-item:last-child { border-bottom: none; }
+  .edu-date { font-size: 13px; color: var(--text-dim); padding-top: 4px; text-align: right; }
+  .edu-date strong { display: block; font-weight: 700; color: var(--text); font-size: 22px; letter-spacing: -0.03em; margin-bottom: 4px; }
+  .edu-line { background: var(--border); position: relative; }
+  .edu-line::before { content: ''; position: absolute; top: 8px; left: 50%; transform: translateX(-50%); width: 9px; height: 9px; background: var(--accent2); border-radius: 50%; box-shadow: 0 0 0 3px var(--bg2); }
+  .edu-degree { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent2); margin-bottom: 8px; }
+  .edu-institution { font-size: 19px; font-weight: 600; margin-bottom: 8px; line-height: 1.35; letter-spacing: -0.01em; }
+  .edu-spec { font-size: 14px; color: var(--text-dim); line-height: 1.6; }
+  @media (max-width: 900px) {
+    .edu-item { grid-template-columns: 1fr; gap: 8px; }
+    .edu-date { text-align: left; }
+    .edu-line { display: none; }
+  }
+
+  /* ── VISUAL FX ── */
+  .to-reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.22, 1, 0.36, 1); }
+  .to-reveal.revealed { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .to-reveal { opacity: 1; transform: none; transition: none; }
+    #heroCanvas, .hero-scanline { display: none !important; }
+  }
+
+  #heroCanvas { position: absolute; inset: 0; z-index: 1; pointer-events: none; width: 100%; height: 100%; }
+  .hero-scanline { position: absolute; left: 0; right: 0; height: 1px; background: linear-gradient(to right, transparent 0%, rgba(56,162,204,0.5) 50%, transparent 100%); animation: scandown 7s ease-in-out infinite; z-index: 3; pointer-events: none; }
+  @keyframes scandown { 0% { top: 0; opacity: 0; } 4% { opacity: 1; } 96% { opacity: 0.5; } 100% { top: 100%; opacity: 0; } }
+
+  .experience { background-color: var(--bg); background-image: radial-gradient(circle, rgba(255,255,255,0.022) 1px, transparent 1px); background-size: 28px 28px; }
+  .objects { background-color: var(--bg); background-image: radial-gradient(circle, rgba(255,255,255,0.022) 1px, transparent 1px); background-size: 28px 28px; }
+
+  .stack-bar { transition: width 1s cubic-bezier(0.22, 1, 0.36, 1) 0.1s; }
+  .exp-line::before { transition: box-shadow 0.35s; }
+  .exp-item:hover .exp-line::before { box-shadow: 0 0 0 3px var(--bg), 0 0 14px rgba(56,162,204,0.75); }
+  .obj-card:hover .obj-year { text-shadow: 0 0 12px rgba(56,162,204,0.7); }
+
+  .hero-tag { position: relative; overflow: hidden; }
+  .hero-tag::after { content: ''; position: absolute; left: -100%; top: 0; width: 60%; height: 100%; background: linear-gradient(to right, transparent, rgba(56,162,204,0.18), transparent); animation: shimmer 3.5s ease-in-out infinite 1.2s; pointer-events: none; }
+  @keyframes shimmer { 0% { left: -100%; } 100% { left: 200%; } }
+</style>
+
+<script>
+(function(){
+  // Scroll reveal
+  var revealIO = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('revealed'); revealIO.unobserve(e.target); } });
+  }, {threshold:0.08, rootMargin:'0px 0px -30px 0px'});
+  ['.exp-item','.obj-card','.skill-group','.ai-card','.ana-value-item','.edu-item','.stack-item'].forEach(function(sel){
+    document.querySelectorAll(sel).forEach(function(el,i){
+      el.classList.add('to-reveal');
+      el.style.transitionDelay = Math.min(i*0.07, 0.21)+'s';
+      revealIO.observe(el);
+    });
+  });
+
+  // Skill bar animation
+  var bars = document.querySelectorAll('.stack-bar');
+  bars.forEach(function(b){ b.setAttribute('data-w', b.style.width); b.style.width='0'; });
+  var barIO = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ (function(b){ setTimeout(function(){ b.style.width=b.getAttribute('data-w'); },120); })(e.target); barIO.unobserve(e.target); }
+    });
+  }, {threshold:0.4});
+  bars.forEach(function(b){ barIO.observe(b); });
+
+  // Counter animation
+  function countUp(el){
+    var target=parseInt(el.getAttribute('data-n'),10), start=0, inc=target/(1300/16);
+    el.textContent='0';
+    var t=setInterval(function(){ start=Math.min(start+inc,target); el.textContent=Math.round(start); if(start>=target) clearInterval(t); },16);
+  }
+  var cntIO = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ countUp(e.target); cntIO.unobserve(e.target); } });
+  }, {threshold:0.5});
+  document.querySelectorAll('.count-num').forEach(function(el){ cntIO.observe(el); });
+
+  // Hero particle canvas
+  var canvas = document.getElementById('heroCanvas');
+  if(!canvas) return;
+  var ctx = canvas.getContext('2d'), W, H, pts;
+  function init(){
+    W=canvas.width=canvas.offsetWidth; H=canvas.height=canvas.offsetHeight; pts=[];
+    for(var i=0;i<62;i++) pts.push({x:Math.random()*W, y:Math.random()*H, r:Math.random()*1.2+0.4, vx:(Math.random()-0.5)*0.38, vy:(Math.random()-0.5)*0.38, a:Math.random()*0.28+0.1});
+  }
+  init(); window.addEventListener('resize', init);
+  function frame(){
+    ctx.clearRect(0,0,W,H);
+    for(var i=0;i<pts.length;i++){
+      var p=pts[i];
+      for(var j=i+1;j<pts.length;j++){
+        var q=pts[j], dx=p.x-q.x, dy=p.y-q.y, d=Math.sqrt(dx*dx+dy*dy);
+        if(d<115){ ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(q.x,q.y); ctx.strokeStyle='rgba(56,162,204,'+(0.14*(1-d/115)).toFixed(3)+')'; ctx.lineWidth=0.5; ctx.stroke(); }
+      }
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,6.2832); ctx.fillStyle='rgba(56,162,204,'+p.a+')'; ctx.fill();
+      p.x+=p.vx; p.y+=p.vy;
+      if(p.x<0||p.x>W) p.vx*=-1; if(p.y<0||p.y>H) p.vy*=-1;
+    }
+    requestAnimationFrame(frame);
+  }
+  frame();
+})();
+</script>
 </body></html>
