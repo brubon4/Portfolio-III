@@ -494,7 +494,7 @@
   .stack-use { font-size: 13px; color: var(--text-dim); text-align: right; }
   .ana-projects { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 2px; }
   .proj-header-label { font-size: 15px; color: var(--text-dim); padding: 20px 32px; background: var(--bg3); border-left: 3px solid var(--accent); margin-bottom: 2px; }
-  .proj-diagrams { margin-bottom: 2px; background: var(--bg); border: 1px solid var(--border); border-radius: 2px; padding: 32px; border-left: 3px solid var(--accent); }
+  .proj-diagrams { margin-bottom: 2px; background: var(--bg); border: 1px solid var(--border); border-radius: 2px; padding: 24px; }
   .proj-caption { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 2px; }
   .proj-caption-item { background: var(--bg3); padding: 28px 32px; border-bottom: 3px solid; }
   .proj-caption-item:first-child { border-color: oklch(55% 0.14 220); }
@@ -503,7 +503,11 @@
   .proj-caption-title { font-size: 17px; font-weight: 600; margin-bottom: 10px; line-height: 1.3; }
   .proj-caption-desc { font-size: 14px; color: var(--text-dim); line-height: 1.75; }
   .proj-svg-wrap { background: var(--bg); padding: 32px; }
-  @media (max-width: 900px) { .proj-caption { grid-template-columns: 1fr; } }
+  @media (max-width: 900px) {
+    .proj-caption { grid-template-columns: 1fr; }
+    .proj-header-label { font-size: 12px; padding: 12px 16px; }
+    .proj-diagrams { padding: 12px; }
+  }
   .ana-card { background: var(--bg3); padding: 40px; border-bottom: 3px solid var(--accent); }
   .ana-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; flex-wrap: wrap; gap: 8px; }
   .ana-tag { font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
