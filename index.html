@@ -771,12 +771,12 @@
   @keyframes shimmer-swipe { 0% { transform: translateX(-200%) skewX(-15deg); } 100% { transform: translateX(400%) skewX(-15deg); } }
   .skill-tag { position: relative !important; overflow: hidden !important; }
   .skill-tag::after { content: ''; position: absolute; top: -10%; left: 0; width: 55%; height: 120%; background: linear-gradient(105deg, transparent 20%, rgba(120,210,255,0.55) 50%, transparent 80%); pointer-events: none; transform: translateX(-200%) skewX(-15deg); z-index: 1; }
-  .skill-tag:hover::after { animation: shimmer-swipe 0.85s ease-in-out forwards; }
+  .skill-tag:hover::after, .skill-tag.shimmer-active::after { animation: shimmer-swipe 0.85s ease-in-out forwards; }
 
-  /* Shimmer on section labels (hover) */
+  /* Shimmer on section labels (hover / tap) */
   .section-tag { position: relative !important; overflow: hidden !important; display: inline-block; }
   .section-tag::after { content: ''; position: absolute; top: -10%; left: 0; width: 55%; height: 120%; background: linear-gradient(105deg, transparent 20%, rgba(120,210,255,0.6) 50%, transparent 80%); pointer-events: none; transform: translateX(-200%) skewX(-15deg); z-index: 1; }
-  .section-tag:hover::after { animation: shimmer-swipe 1s ease-in-out forwards; }
+  .section-tag:hover::after, .section-tag.shimmer-active::after { animation: shimmer-swipe 1s ease-in-out forwards; }
 </style>
 
 <script>
@@ -853,6 +853,18 @@
     }
     lastY = y;
   }, {passive: true});
+})();
+
+// Shimmer on tap (touch devices)
+(function(){
+  document.querySelectorAll('.skill-tag, .section-tag').forEach(function(el){
+    el.addEventListener('touchstart', function(){
+      var self = this;
+      if (self.classList.contains('shimmer-active')) return;
+      self.classList.add('shimmer-active');
+      setTimeout(function(){ self.classList.remove('shimmer-active'); }, 1000);
+    }, {passive: true});
+  });
 })();
 </script>
 </body></html>
