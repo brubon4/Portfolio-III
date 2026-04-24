@@ -767,7 +767,15 @@
 
   .hero-tag { position: relative; overflow: hidden; }
   .hero-tag::after { content: ''; position: absolute; left: -100%; top: 0; width: 60%; height: 100%; background: linear-gradient(to right, transparent, rgba(56,162,204,0.18), transparent); animation: shimmer 3.5s ease-in-out infinite 1.2s; pointer-events: none; }
-  @keyframes shimmer { 0% { left: -100%; } 100% { left: 200%; } }
+  /* Shimmer on skill tags (hover) */
+  .skill-tag { position: relative; overflow: hidden; }
+  .skill-tag::after { content: ''; position: absolute; left: -100%; top: 0; width: 60%; height: 100%; background: linear-gradient(to right, transparent, rgba(56,162,204,0.16), transparent); pointer-events: none; }
+  .skill-tag:hover::after { animation: shimmer 0.7s ease-in-out; }
+
+  /* Shimmer on section labels (hover) */
+  .section-tag { position: relative; overflow: hidden; display: inline-block; }
+  .section-tag::after { content: ''; position: absolute; left: -100%; top: 0; width: 60%; height: 100%; background: linear-gradient(to right, transparent, rgba(56,162,204,0.22), transparent); pointer-events: none; }
+  .section-tag:hover::after { animation: shimmer 0.9s ease-in-out; }
 </style>
 
 <script>
