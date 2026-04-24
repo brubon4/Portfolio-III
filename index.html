@@ -438,9 +438,105 @@
 
   <!-- PROJECT DIAGRAMS -->
   <div class="proj-diagrams">
-    <div class="proj-header-label">Презентация реализованных мною проектов</div>
-    <div class="proj-svg-wrap">
-      <img src="uploads/portfolio_projects_v4.svg" alt="Схемы проектов" style="width:100%;display:block;filter:invert(0.88) hue-rotate(180deg) brightness(1.15) saturate(0.85) contrast(0.92);">
+    <div class="proj-header-label">Реализованные BI-проекты — архитектура и результаты</div>
+
+    <div class="proj-switch">
+      <button class="proj-switch-btn active" data-target="pf-proj-1">Проект 1 — СМР</button>
+      <button class="proj-switch-btn" data-target="pf-proj-2">Проект 2 — ПК-1</button>
+    </div>
+
+    <!-- Project 1 -->
+    <div class="pf-diagram active" id="pf-proj-1">
+      <div class="pf-node pf-accent" style="text-align:center">
+        <div class="pf-title" style="font-size:15px">Проект 1 — Система контроля выполнения СМР</div>
+        <div class="pf-sub pf-hl">Power BI · DAX · Power Query</div>
+      </div>
+      <div class="pf-arrow">↓</div>
+      <div class="pf-lbl">Источники</div>
+      <div class="pf-row">
+        <div class="pf-node"><div class="pf-title">Реестр КС-6а</div><div class="pf-sub">факт выполнения</div></div>
+        <div class="pf-node"><div class="pf-title">Акты КС-2</div><div class="pf-sub">сметное выполнение</div></div>
+        <div class="pf-node"><div class="pf-title">Реестр подрядчиков</div><div class="pf-sub">объёмы и статусы</div></div>
+      </div>
+      <div class="pf-arrow">↓</div>
+      <div class="pf-lbl">ETL</div>
+      <div style="display:flex;gap:6px;align-items:flex-start">
+        <div class="pf-node pf-accent" style="flex:1">
+          <div class="pf-title">Power Query — ETL-преобразование</div>
+          <div class="pf-sub">очистка · нормализация · свёртывание · валидация кириллицы · генерация шифра проекта</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0">
+          <div class="pf-node pf-aside"><div class="pf-sub">Справ. шифра проекта</div></div>
+          <div class="pf-node pf-aside"><div class="pf-sub">Справ. ОФО / дирекций</div></div>
+        </div>
+      </div>
+      <div class="pf-arrow">↓</div>
+      <div class="pf-lbl">Модель</div>
+      <div class="pf-node pf-accent">
+        <div class="pf-title">Модель данных — схема снежинка</div>
+        <div class="pf-sub">3 таблицы фактов + справочники · связи 1:N</div>
+      </div>
+      <div class="pf-arrow">↓</div>
+      <div class="pf-lbl">DAX</div>
+      <div class="pf-node pf-accent">
+        <div class="pf-title">DAX-меры — бизнес-логика (7 мер)</div>
+        <div class="pf-sub">CALCULATE · CONTAINSSTRING · COALESCE · DIVIDE · классификация видов выполнения · фильтрация подрядчиков</div>
+      </div>
+      <div class="pf-arrow">↓</div>
+      <div class="pf-lbl">Дашборд</div>
+      <div class="pf-row">
+        <div class="pf-node pf-accent2"><div class="pf-title">KPI</div><div class="pf-sub">4 карточки</div></div>
+        <div class="pf-node pf-accent2"><div class="pf-title">График</div><div class="pf-sub">план / факт</div></div>
+        <div class="pf-node pf-accent2"><div class="pf-title">Матрица</div><div class="pf-sub">подрядчики</div></div>
+        <div class="pf-node pf-accent2"><div class="pf-title">Таблица</div><div class="pf-sub">RAG-статусы</div></div>
+        <div class="pf-node"><div class="pf-sub">Фильтр: шифр · дирекция</div><div class="pf-sub" style="margin-top:4px">Фильтр: ОФО · период</div></div>
+      </div>
+      <div class="pf-arrow">↓</div>
+      <div class="pf-node pf-result">
+        <div class="pf-title">Результат: контроль выполнения СМР в реальном времени · 25 пользователей</div>
+      </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="pf-diagram" id="pf-proj-2">
+      <div class="pf-node pf-accent" style="text-align:center">
+        <div class="pf-title" style="font-size:15px">Проект 2 — Консолидация 11 источников по зданиям (ПК-1)</div>
+        <div class="pf-sub pf-hl">Power Query · ETL-архитектура · Excel · Power BI</div>
+      </div>
+      <div class="pf-arrow">↓</div>
+      <div class="pf-lbl">11 источников</div>
+      <div class="pf-row">
+        <div class="pf-node"><div class="pf-title">РД / ИД</div><div class="pf-sub">проектная</div></div>
+        <div class="pf-node"><div class="pf-title">Оборудование</div><div class="pf-sub">поставки</div></div>
+        <div class="pf-node"><div class="pf-title">Подрядчики</div><div class="pf-sub">объёмы</div></div>
+        <div class="pf-node"><div class="pf-title">Сметные ост.</div><div class="pf-sub">КС-2 / СУПИР</div></div>
+        <div class="pf-node"><div class="pf-title">План реализ.</div><div class="pf-sub">квартальный</div></div>
+        <div class="pf-node"><div class="pf-title">Журналы</div><div class="pf-sub">сводный</div></div>
+        <div class="pf-node pf-accent"><div class="pf-title">+ 5</div><div class="pf-sub">прочие</div></div>
+      </div>
+      <div class="pf-arrow">↓</div>
+      <div class="pf-lbl">ETL</div>
+      <div class="pf-node pf-accent">
+        <div class="pf-title">Power Query — унификация и трансформация данных</div>
+        <div class="pf-sub">очистка · нормализация · выжимка ключевых параметров · сопоставление по зданиям</div>
+      </div>
+      <div class="pf-arrow">↓</div>
+      <div class="pf-lbl">ETL-файл</div>
+      <div class="pf-node pf-accent">
+        <div class="pf-title">Исходники.xlsx — единый ETL-файл (8 вкладок)</div>
+        <div class="pf-sub">РД · Оборудование · ТП · Сметные · План · ИД · Журналы · Подрядчики</div>
+        <div class="pf-sub" style="margin-top:4px;font-style:italic">Руководитель видит итог и может открыть любой источник</div>
+      </div>
+      <div class="pf-arrow">↓</div>
+      <div class="pf-lbl">BI-слой</div>
+      <div class="pf-node pf-accent">
+        <div class="pf-title">Power BI — аналитический слой и визуализация</div>
+        <div class="pf-sub">DAX-меры · drill-down по зданиям · интерактивные фильтры · автообновление · навигация по уровням детализации</div>
+      </div>
+      <div class="pf-arrow">↓</div>
+      <div class="pf-node pf-result">
+        <div class="pf-title">Результат: единый статус-отчёт по всем объектам ПК-1 для оперативного управления</div>
+      </div>
     </div>
   </div>
 
@@ -526,6 +622,54 @@
     .ana-value { grid-template-columns: 1fr; }
   }
 </style>
+
+<style>
+  /* ── PROJECT FLOW DIAGRAMS ── */
+  .proj-switch { display: flex; gap: 0; margin-bottom: 28px; border: 1px solid var(--border); border-radius: 2px; overflow: hidden; }
+  .proj-switch-btn { flex: 1; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 14px 20px; background: var(--bg3); color: var(--text-dim); border: none; cursor: pointer; transition: background 0.22s, color 0.22s; font-family: var(--font); position: relative; }
+  .proj-switch-btn::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--accent); opacity: 0; transition: opacity 0.22s; }
+  .proj-switch-btn.active { background: oklch(13% 0.022 210 / 0.55); color: var(--text); }
+  .proj-switch-btn.active::after { opacity: 1; }
+  .proj-switch-btn:not(.active):hover { background: oklch(19% 0.012 250); color: var(--text); }
+
+  .pf-diagram { display: none; flex-direction: column; gap: 0; }
+  .pf-diagram.active { display: flex; animation: pf-in 0.35s ease; }
+  @keyframes pf-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+  .pf-lbl { font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); margin: 12px 0 6px; }
+  .pf-arrow { text-align: center; color: oklch(35% 0.012 250); font-size: 16px; line-height: 1; padding: 4px 0; }
+  .pf-row { display: flex; gap: 6px; flex-wrap: wrap; }
+  .pf-row .pf-node { flex: 1; min-width: 90px; }
+
+  .pf-node { background: var(--bg3); border: 1px solid var(--border); border-radius: 2px; padding: 12px 16px; }
+  .pf-node.pf-accent { background: oklch(13% 0.022 210 / 0.45); border-color: oklch(62% 0.16 210 / 0.4); }
+  .pf-node.pf-accent2 { background: oklch(13% 0.015 55 / 0.35); border-color: oklch(70% 0.13 55 / 0.4); }
+  .pf-node.pf-aside { padding: 8px 12px; background: var(--bg2); }
+  .pf-node.pf-result { background: oklch(11% 0.018 145 / 0.5); border-color: oklch(65% 0.18 145 / 0.5); text-align: center; }
+  .pf-node.pf-result .pf-title { color: oklch(65% 0.18 145); margin-bottom: 0; }
+
+  .pf-title { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 4px; line-height: 1.35; }
+  .pf-sub { font-size: 11px; color: var(--text-dim); line-height: 1.5; }
+  .pf-hl { color: var(--accent) !important; }
+
+  @media (max-width: 900px) {
+    .proj-switch-btn { font-size: 11px; padding: 12px 8px; letter-spacing: 0.03em; }
+    .pf-row .pf-node { min-width: 80px; }
+  }
+</style>
+<script>
+(function(){
+  document.querySelectorAll('.proj-switch-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var tgt = this.getAttribute('data-target');
+      document.querySelectorAll('.proj-switch-btn').forEach(function(b){ b.classList.remove('active'); });
+      document.querySelectorAll('.pf-diagram').forEach(function(d){ d.classList.remove('active'); });
+      this.classList.add('active');
+      document.getElementById(tgt).classList.add('active');
+    });
+  });
+})();
+</script>
 
 <!-- AI TOOLS -->
 <section class="ai-tools" id="ai-tools">
