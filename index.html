@@ -451,13 +451,13 @@
 
     <div id="svg-proj-1" class="svg-proj">
       <svg class="proj-svg" viewBox="0 0 680 568" xmlns="http://www.w3.org/2000/svg" style="display:block;filter:invert(0.88) hue-rotate(180deg) brightness(1.15) saturate(0.85) contrast(0.92);">
-        <image href="uploads/portfolio_projects_v4.svg" x="0" y="0" width="680" height="1160"/>
+        <image id="svg-img-1" href="uploads/portfolio_projects_v4.svg" x="0" y="0" width="680" height="1160"/>
       </svg>
     </div>
 
     <div id="svg-proj-2" class="svg-proj" style="display:none">
       <svg class="proj-svg" viewBox="0 568 680 592" xmlns="http://www.w3.org/2000/svg" style="display:block;filter:invert(0.88) hue-rotate(180deg) brightness(1.15) saturate(0.85) contrast(0.92);">
-        <image href="uploads/portfolio_projects_v4.svg" x="0" y="0" width="680" height="1160"/>
+        <image id="svg-img-2" href="uploads/portfolio_projects_v4.svg" x="0" y="0" width="680" height="1160"/>
       </svg>
     </div>
   </div>
@@ -1048,6 +1048,11 @@ function applyLang(lang){
   });
   document.querySelectorAll('.lang-btn').forEach(function(b){
     b.classList.toggle('active',b.getAttribute('data-lang')===lang);
+  });
+  var svgFile=lang==='en'?'uploads/portfolio_projects_v4_en.svg':'uploads/portfolio_projects_v4.svg';
+  [1,2].forEach(function(n){
+    var img=document.getElementById('svg-img-'+n);
+    if(img) img.setAttribute('href',svgFile);
   });
   try{localStorage.setItem('lang',lang);}catch(e){}
 }
