@@ -136,8 +136,15 @@
 
   footer { padding: 28px 60px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--text-dim); }
 
+  .lang-switch { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+  .lang-sep { color: var(--border); font-size: 12px; }
+  .lang-btn { background: none; border: none; cursor: pointer; font-family: var(--font); font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); padding: 4px 2px; transition: color 0.2s; line-height: 1; }
+  .lang-btn.active { color: var(--accent); }
+  .lang-btn:hover:not(.active) { color: var(--text); }
+
   @media (max-width: 900px) {
-    nav { padding: 16px 24px; flex-direction: column; align-items: flex-start; gap: 10px; }
+    nav { padding: 16px 24px; flex-direction: column; align-items: flex-start; gap: 10px; position: relative; }
+    .lang-switch { position: absolute; top: 18px; right: 24px; }
     .nav-links { overflow-x: auto; gap: 0; white-space: nowrap; scrollbar-width: none; flex-wrap: nowrap; width: 100%; }
     .nav-links a { font-size: 13px; padding: 6px 14px; border-radius: 20px; background: rgba(255,255,255,0.06); flex-shrink: 0; margin-right: 8px; }
     .hero { grid-template-columns: 1fr; min-height: auto; }
@@ -161,16 +168,21 @@
 <body>
 
 <nav>
-  <div class="nav-logo">С. Аминский</div>
+  <div class="nav-logo" data-i18n="nav-logo">С. Аминский</div>
   <div class="nav-links">
-    <a href="#about">Обо мне</a>
-    <a href="#experience">Опыт</a>
-    <a href="#skills">Навыки</a>
-    <a href="#analytics">Аналитика</a>
-    <a href="#ai-tools">AI-инструменты</a>
-    <a href="#objects">Проекты</a>
-    <a href="#education">Образование</a>
-    <a href="#contact">Контакты</a>
+    <a href="#about" data-i18n="nav-about">Обо мне</a>
+    <a href="#experience" data-i18n="nav-exp">Опыт</a>
+    <a href="#skills" data-i18n="nav-skills">Навыки</a>
+    <a href="#analytics" data-i18n="nav-analytics">Аналитика</a>
+    <a href="#ai-tools" data-i18n="nav-ai">AI-инструменты</a>
+    <a href="#objects" data-i18n="nav-objects">Проекты</a>
+    <a href="#education" data-i18n="nav-education">Образование</a>
+    <a href="#contact" data-i18n="nav-contact">Контакты</a>
+  </div>
+  <div class="lang-switch">
+    <button class="lang-btn active" data-lang="ru">RU</button>
+    <span class="lang-sep">|</span>
+    <button class="lang-btn" data-lang="en">EN</button>
   </div>
 </nav>
 
@@ -179,23 +191,23 @@
   <canvas id="heroCanvas"></canvas>
   <div class="hero-scanline"></div>
   <div class="hero-left">
-    <div class="hero-tag">BI-аналитик в строительстве</div>
+    <div class="hero-tag" data-i18n="hero-tag">BI-аналитик в строительстве</div>
     <h1 class="hero-name">Сергей<br><span>Аминский</span></h1>
-    <p class="hero-role">Data Analyst · Power BI · 14 лет опыта</p>
-    <p class="hero-desc">Превращаю сырые производственные данные в управляемые аналитические системы. Power BI · Power Query (M) · Pivot (DAX) — на объектах атомной отрасли.</p>
+    <p class="hero-role" data-i18n="hero-role">Data Analyst · Power BI · 14 лет опыта</p>
+    <p class="hero-desc" data-i18n="hero-desc">Превращаю сырые производственные данные в управляемые аналитические системы. Power BI · Power Query (M) · Pivot (DAX) — на объектах атомной отрасли.</p>
     <div class="hero-stats">
       <div>
         <div class="stat-num"><span class="count-num" data-n="14">14</span><span>+</span></div>
-        <div class="stat-label">лет опыта</div>
+        <div class="stat-label" data-i18n="stat-years">лет опыта</div>
       </div>
       <div>
         <div class="stat-num"><span class="count-num" data-n="10">10</span><span>×</span></div>
-        <div class="stat-label">ускорение отчётности</div>
+        <div class="stat-label" data-i18n="stat-speed">ускорение отчётности</div>
       </div>
     </div>
     <div class="hero-cta">
-      <a href="#contact" class="btn-primary">Связаться</a>
-      <a href="#experience" class="btn-secondary">Смотреть опыт</a>
+      <a href="#contact" class="btn-primary" data-i18n="btn-contact">Связаться</a>
+      <a href="#experience" class="btn-secondary" data-i18n="btn-exp">Смотреть опыт</a>
     </div>
   </div>
   <div class="hero-right">
@@ -206,8 +218,8 @@
 
 <!-- ABOUT -->
 <section class="about" id="about">
-  <div class="section-tag">Обо мне</div>
-  <div class="section-title">От инженера<br><em>до аналитика данных</em></div>
+  <div class="section-tag" data-i18n="about-tag">Обо мне</div>
+  <div class="section-title" data-i18n="about-title">От инженера<br><em>до аналитика данных</em></div>
   <div class="about-grid">
     <div class="about-photo-wrap">
       <img src="uploads/EC5D65A9-87C7-431A-AAC1-FFC829E0DD31.png" class="about-photo" alt="На объекте АЭС Аккую">
@@ -215,96 +227,96 @@
       <div class="about-photo-accent2"></div>
     </div>
     <div class="about-text">
-      <p><strong>14 лет в строительстве и аналитике</strong> — от проектировщика слаботочных систем до BI-аналитика на атомной стройке. Понимаю процессы изнутри и строю отчётность, которой доверяют.</p>
-      <p>Сейчас — АЭС «Аккую», Турция. Автоматизирую обработку производственных и финансовых данных через <strong>Power BI, Power Query, DAX</strong>. Ускорение подготовки — в 10 раз.</p>
+      <p data-i18n="about-p1"><strong>14 лет в строительстве и аналитике</strong> — от проектировщика слаботочных систем до BI-аналитика на атомной стройке. Понимаю процессы изнутри и строю отчётность, которой доверяют.</p>
+      <p data-i18n="about-p2">Сейчас — АЭС «Аккую», Турция. Автоматизирую обработку производственных и финансовых данных через <strong>Power BI, Power Query, DAX</strong>. Ускорение подготовки — в 10 раз.</p>
     </div>
   </div>
 </section>
 
 <!-- EXPERIENCE -->
 <section class="experience" id="experience">
-  <div class="section-tag">Опыт работы</div>
-  <div class="section-title"><em>14 лет</em><br>в отрасли</div>
+  <div class="section-tag" data-i18n="exp-tag">Опыт работы</div>
+  <div class="section-title" data-i18n="exp-title"><em>14 лет</em><br>в отрасли</div>
   <div class="exp-grid">
     <div class="exp-item">
-      <div class="exp-date"><strong>окт 2024 — н.в.</strong>1 год 7 мес.</div>
+      <div class="exp-date" data-i18n="exp1-date"><strong>окт 2024 — н.в.</strong>1 год 7 мес.</div>
       <div class="exp-line"></div>
       <div class="exp-content">
         <div class="exp-company">TITAN2 IC İÇTAŞ İNŞAAT</div>
-        <div class="exp-role">Аналитик данных / Главный специалист</div>
-        <div class="exp-object">АЭС «Аккую», Турция</div>
+        <div class="exp-role" data-i18n="exp1-role">Аналитик данных / Главный специалист</div>
+        <div class="exp-object" data-i18n="exp1-obj">АЭС «Аккую», Турция</div>
         <ul class="exp-bullets">
-          <li>ETL-процессы, Power BI, Power Query (M), DAX, VBA — единая аналитическая база для всего проекта</li>
-          <li>Ускорение подготовки — <strong>в 10 раз</strong></li>
-          <li>Валидация физических объёмов субподрядчиков, контроль данных КС-6а — выявление расхождений до подписания актов, защита бюджета проекта</li>
+          <li data-i18n="exp1-b1">ETL-процессы, Power BI, Power Query (M), DAX, VBA — единая аналитическая база для всего проекта</li>
+          <li data-i18n="exp1-b2">Ускорение подготовки — <strong>в 10 раз</strong></li>
+          <li data-i18n="exp1-b3">Валидация физических объёмов субподрядчиков, контроль данных КС-6а — выявление расхождений до подписания актов, защита бюджета проекта</li>
         </ul>
       </div>
     </div>
     <div class="exp-item">
-      <div class="exp-date"><strong>окт 2022 — сен 2024</strong>2 года</div>
+      <div class="exp-date" data-i18n="exp2-date"><strong>окт 2022 — сен 2024</strong>2 года</div>
       <div class="exp-line"></div>
       <div class="exp-content">
         <div class="exp-company">INTENS İNŞAAT A.Ş.</div>
-        <div class="exp-role">Главный специалист / Аналитик инженерных данных</div>
-        <div class="exp-object">АЭС «Аккую», Турция — ж/б тоннели, трубопроводы SUBOR</div>
+        <div class="exp-role" data-i18n="exp2-role">Главный специалист / Аналитик инженерных данных</div>
+        <div class="exp-object" data-i18n="exp2-obj">АЭС «Аккую», Турция — ж/б тоннели, трубопроводы SUBOR</div>
         <ul class="exp-bullets">
-          <li>Анализ РД, разработка разделительных ведомостей, сметное сопровождение</li>
-          <li><strong>3D-моделирование</strong> ж/б тоннелей (Revit), координация данных между отделами</li>
-          <li>Разработка ППР: тоннели, трубопроводы SUBOR, здание ВЗиС</li>
+          <li data-i18n="exp2-b1">Анализ РД, разработка разделительных ведомостей, сметное сопровождение</li>
+          <li data-i18n="exp2-b2"><strong>3D-моделирование</strong> ж/б тоннелей (Revit), координация данных между отделами</li>
+          <li data-i18n="exp2-b3">Разработка ППР: тоннели, трубопроводы SUBOR, здание ВЗиС</li>
         </ul>
       </div>
     </div>
     <div class="exp-item">
-      <div class="exp-date"><strong>июл 2015 — окт 2022</strong>7 лет 4 мес.</div>
+      <div class="exp-date" data-i18n="exp3-date"><strong>июл 2015 — окт 2022</strong>7 лет 4 мес.</div>
       <div class="exp-line"></div>
       <div class="exp-content">
-        <div class="exp-company">АО «Индивидуальные бизнес решения» · Москва</div>
-        <div class="exp-role">Ведущий инженер ПТО / Инженер-аналитик проектов</div>
-        <div class="exp-object">Транспортная, промышленная, нефтегазовая инфраструктура</div>
+        <div class="exp-company" data-i18n="exp3-company">АО «Индивидуальные бизнес решения» · Москва</div>
+        <div class="exp-role" data-i18n="exp3-role">Ведущий инженер ПТО / Инженер-аналитик проектов</div>
+        <div class="exp-object" data-i18n="exp3-obj">Транспортная, промышленная, нефтегазовая инфраструктура</div>
         <ul class="exp-bullets">
-          <li>Управление отделом ПТО — <strong>6 человек</strong>; РД, ППР, ИД для нефтегазовых и транспортных объектов</li>
-          <li>Финансовые показатели проектов: бюджет, отклонения факта от плана, защита объёмов</li>
-          <li>Мост через р. Обь (Новосибирск) · Обход Хабаровска · ГПЗ Оренбург · промыслы «Медвежье»</li>
+          <li data-i18n="exp3-b1">Управление отделом ПТО — <strong>6 человек</strong>; РД, ППР, ИД для нефтегазовых и транспортных объектов</li>
+          <li data-i18n="exp3-b2">Финансовые показатели проектов: бюджет, отклонения факта от плана, защита объёмов</li>
+          <li data-i18n="exp3-b3">Мост через р. Обь (Новосибирск) · Обход Хабаровска · ГПЗ Оренбург · промыслы «Медвежье»</li>
         </ul>
       </div>
     </div>
     <div class="exp-item">
-      <div class="exp-date"><strong>фев 2014 — июл 2015</strong>1 год 6 мес.</div>
+      <div class="exp-date" data-i18n="exp4-date"><strong>фев 2014 — июл 2015</strong>1 год 6 мес.</div>
       <div class="exp-line"></div>
       <div class="exp-content">
-        <div class="exp-company">ООО «Комдиагностика» · Москва</div>
-        <div class="exp-role">Инженер-проектировщик / Аналитик технических систем</div>
-        <div class="exp-object">Нефтегаз, нефтехимия, энергетика</div>
+        <div class="exp-company" data-i18n="exp4-company">ООО «Комдиагностика» · Москва</div>
+        <div class="exp-role" data-i18n="exp4-role">Инженер-проектировщик / Аналитик технических систем</div>
+        <div class="exp-object" data-i18n="exp4-obj">Нефтегаз, нефтехимия, энергетика</div>
         <ul class="exp-bullets">
-          <li>Системы вибромониторинга и диагностики для нефтегаза и энергетики</li>
-          <li><strong>Останкинская башня</strong> — система контроля натяжения канатной арматуры</li>
+          <li data-i18n="exp4-b1">Системы вибромониторинга и диагностики для нефтегаза и энергетики</li>
+          <li data-i18n="exp4-b2"><strong>Останкинская башня</strong> — система контроля натяжения канатной арматуры</li>
         </ul>
       </div>
     </div>
     <div class="exp-item">
-      <div class="exp-date"><strong>мар 2013 — фев 2014</strong>1 год</div>
+      <div class="exp-date" data-i18n="exp5-date"><strong>мар 2013 — фев 2014</strong>1 год</div>
       <div class="exp-line"></div>
       <div class="exp-content">
-        <div class="exp-company">АО «ОСИ-Системный интегратор» · Оренбург</div>
-        <div class="exp-role">Инженер-проектировщик слаботочных систем</div>
-        <div class="exp-object">Безопасность, связь, автоматизация</div>
+        <div class="exp-company" data-i18n="exp5-company">АО «ОСИ-Системный интегратор» · Оренбург</div>
+        <div class="exp-role" data-i18n="exp5-role">Инженер-проектировщик слаботочных систем</div>
+        <div class="exp-object" data-i18n="exp5-obj">Безопасность, связь, автоматизация</div>
         <ul class="exp-bullets">
-          <li>РД по системам АПС, СКУД, СКС, СОТ · объекты «Газпрома» в Оренбурге</li>
+          <li data-i18n="exp5-b1">РД по системам АПС, СКУД, СКС, СОТ · объекты «Газпрома» в Оренбурге</li>
         </ul>
       </div>
     </div>
     <div class="exp-item">
-      <div class="exp-date"><strong>июн 2012 — мар 2013</strong>10 мес.</div>
+      <div class="exp-date" data-i18n="exp6-date"><strong>июн 2012 — мар 2013</strong>10 мес.</div>
       <div class="exp-line"></div>
       <div class="exp-content">
-        <div class="exp-company">ООО «Инжиниринг-проект» · Оренбург</div>
-        <div class="exp-role">Инженер-проектировщик слаботочных систем</div>
-        <div class="exp-object">Системы безопасности и связи</div>
+        <div class="exp-company" data-i18n="exp6-company">ООО «Инжиниринг-проект» · Оренбург</div>
+        <div class="exp-role" data-i18n="exp6-role">Инженер-проектировщик слаботочных систем</div>
+        <div class="exp-object" data-i18n="exp6-obj">Системы безопасности и связи</div>
         <ul class="exp-bullets">
-          <li>Проектирование слаботочных систем по ГОСТ 21.1101-2013; разработка РД по системам безопасности и связи</li>
-          <li>Составление технических заданий (ТЗ) и технических условий (ТУ); анализ требований Заказчика</li>
-          <li><strong>ПО «Стрела»</strong>, Оренбург (2012) — РД по системам АПС, СОУЭ, СКЗ</li>
-          <li><strong>НПЗ «Газпром нефтехим Салавату»</strong> (2012) — РД по системам ОС, СКУД, СОТ, СС</li>
+          <li data-i18n="exp6-b1">Проектирование слаботочных систем по ГОСТ 21.1101-2013; разработка РД по системам безопасности и связи</li>
+          <li data-i18n="exp6-b2">Составление технических заданий (ТЗ) и технических условий (ТУ); анализ требований Заказчика</li>
+          <li data-i18n="exp6-b3"><strong>ПО «Стрела»</strong>, Оренбург (2012) — РД по системам АПС, СОУЭ, СКЗ</li>
+          <li data-i18n="exp6-b4"><strong>НПЗ «Газпром нефтехим Салавату»</strong> (2012) — РД по системам ОС, СКУД, СОТ, СС</li>
         </ul>
       </div>
     </div>
@@ -327,11 +339,11 @@
 
 <!-- SKILLS -->
 <section class="skills" id="skills">
-  <div class="section-tag">Навыки</div>
-  <div class="section-title">Инструменты<br><em>и компетенции</em></div>
+  <div class="section-tag" data-i18n="skills-tag">Навыки</div>
+  <div class="section-title" data-i18n="skills-title">Инструменты<br><em>и компетенции</em></div>
   <div class="skills-grid">
     <div class="skill-group">
-      <div class="skill-group-title">BI и аналитика данных</div>
+      <div class="skill-group-title" data-i18n="sg1-title">BI и аналитика данных</div>
       <div class="skill-tags">
         <span class="skill-tag accent">Power BI</span>
         <span class="skill-tag accent">Power Query (M)</span>
@@ -339,103 +351,102 @@
         <span class="skill-tag">Excel</span>
         <span class="skill-tag">VBA</span>
         <span class="skill-tag">ETL</span>
-        <span class="skill-tag">Аналитические исследования</span>
+        <span class="skill-tag" data-i18n="sg1-t7">Аналитические исследования</span>
       </div>
     </div>
     <div class="skill-group">
-      <div class="skill-group-title">Инженерия и строительство</div>
+      <div class="skill-group-title" data-i18n="sg2-title">Инженерия и строительство</div>
       <div class="skill-tags">
         <span class="skill-tag">AutoCAD</span>
         <span class="skill-tag">Autodesk Revit</span>
-        <span class="skill-tag">РД / ИД / ППР</span>
-        <span class="skill-tag">Сметная документация</span>
+        <span class="skill-tag" data-i18n="sg2-t3">РД / ИД / ППР</span>
+        <span class="skill-tag" data-i18n="sg2-t4">Сметная документация</span>
         <span class="skill-tag">КС-2 / КС-6а</span>
-        <span class="skill-tag">3D-моделирование</span>
+        <span class="skill-tag" data-i18n="sg2-t6">3D-моделирование</span>
       </div>
     </div>
     <div class="skill-group">
-      <div class="skill-group-title">Управление и коммуникация</div>
+      <div class="skill-group-title" data-i18n="sg3-title">Управление и коммуникация</div>
       <div class="skill-tags">
-        <span class="skill-tag">Управление отделом (6 чел.)</span>
-        <span class="skill-tag">Организационные навыки</span>
-        <span class="skill-tag">Техническая переписка</span>
-        <span class="skill-tag">Русский (родной)</span>
+        <span class="skill-tag" data-i18n="sg3-t1">Управление отделом (6 чел.)</span>
+        <span class="skill-tag" data-i18n="sg3-t2">Организационные навыки</span>
+        <span class="skill-tag" data-i18n="sg3-t3">Техническая переписка</span>
+        <span class="skill-tag" data-i18n="sg3-t4">Русский (родной)</span>
         <span class="skill-tag">English B2</span>
       </div>
     </div>
-    <!-- NEW: AI-augmented section spanning full width -->
     <div class="skill-group ai-group">
-      <div class="skill-group-title">AI-augmented аналитик</div>
+      <div class="skill-group-title" data-i18n="sg4-title">AI-augmented аналитик</div>
       <div class="skill-tags">
         <span class="skill-tag accent">ChatGPT / Claude</span>
         <span class="skill-tag accent">Cursor / Copilot</span>
-        <span class="skill-tag accent">Промпт-инжиниринг</span>
-        <span class="skill-tag">Генерация кода и DAX</span>
-        <span class="skill-tag">Автоматизация рутины</span>
-        <span class="skill-tag">ETL через AI</span>
+        <span class="skill-tag accent" data-i18n="sg4-t3">Промпт-инжиниринг</span>
+        <span class="skill-tag" data-i18n="sg4-t4">Генерация кода и DAX</span>
+        <span class="skill-tag" data-i18n="sg4-t5">Автоматизация рутины</span>
+        <span class="skill-tag" data-i18n="sg4-t6">ETL через AI</span>
         <span class="skill-tag">GitHub Copilot</span>
-        <span class="skill-tag">AI-ассистируемый анализ</span>
+        <span class="skill-tag" data-i18n="sg4-t8">AI-ассистируемый анализ</span>
       </div>
-      <div class="skill-note">AI-инструменты позволяют мне закрывать задачи, которые раньше требовали нескольких исполнителей</div>
+      <div class="skill-note" data-i18n="sg4-note">AI-инструменты позволяют мне закрывать задачи, которые раньше требовали нескольких исполнителей</div>
     </div>
   </div>
 </section>
 
 <!-- ANALYTICS DEEP DIVE -->
 <section class="analytics" id="analytics">
-  <div class="section-tag">Аналитика и разработка</div>
-  <div class="section-title">Данные как<br><em>инструмент управления</em></div>
+  <div class="section-tag" data-i18n="ana-tag">Аналитика и разработка</div>
+  <div class="section-title" data-i18n="ana-title">Данные как<br><em>инструмент управления</em></div>
 
   <div class="analytics-stack">
     <div class="stack-col">
-      <div class="stack-col-title">Инструмент</div>
-      <div class="stack-col-title">Уровень</div>
-      <div class="stack-col-title stack-right">Применение</div>
+      <div class="stack-col-title" data-i18n="stack-col1">Инструмент</div>
+      <div class="stack-col-title" data-i18n="stack-col2">Уровень</div>
+      <div class="stack-col-title stack-right" data-i18n="stack-col3">Применение</div>
     </div>
     <div class="stack-item featured">
       <div class="stack-name">Power BI</div>
       <div class="stack-bar-wrap"><div class="stack-bar" style="width:75%"></div><span>Middle+</span></div>
-      <div class="stack-use">Дашборды, матрицы, слайсеры, публикация</div>
+      <div class="stack-use" data-i18n="stack-pbi-use">Дашборды, матрицы, слайсеры, публикация</div>
     </div>
     <div class="stack-item featured">
       <div class="stack-name">Power Query (M)</div>
       <div class="stack-bar-wrap"><div class="stack-bar" style="width:78%"></div><span>Middle+</span></div>
-      <div class="stack-use">ETL, очистка, свёртывание, кодогенерация KKS</div>
+      <div class="stack-use" data-i18n="stack-pq-use">ETL, очистка, свёртывание, кодогенерация KKS</div>
     </div>
     <div class="stack-item featured">
       <div class="stack-name">DAX</div>
       <div class="stack-bar-wrap"><div class="stack-bar" style="width:70%"></div><span>Middle</span></div>
-      <div class="stack-use">CALCULATE, FILTER, CONTAINSSTRING, COALESCE, VAR, SUMX · без time intelligence</div>
+      <div class="stack-use" data-i18n="stack-dax-use">CALCULATE, FILTER, CONTAINSSTRING, COALESCE, VAR, SUMX · без time intelligence</div>
     </div>
     <div class="stack-item">
       <div class="stack-name">Excel / Power Pivot</div>
       <div class="stack-bar-wrap"><div class="stack-bar" style="width:88%"></div><span>Advanced</span></div>
-      <div class="stack-use">ETL, сводные таблицы, формулы с множественными условиями</div>
+      <div class="stack-use" data-i18n="stack-excel-use">ETL, сводные таблицы, формулы с множественными условиями</div>
     </div>
     <div class="stack-item">
       <div class="stack-name">VBA</div>
-      <div class="stack-bar-wrap"><div class="stack-bar" style="width:40%"></div><span>Базовый</span></div>
-      <div class="stack-use">Автоматизация рутинных операций</div>
+      <div class="stack-bar-wrap"><div class="stack-bar" style="width:40%"></div><span data-i18n="level-basic">Базовый</span></div>
+      <div class="stack-use" data-i18n="stack-vba-use">Автоматизация рутинных операций</div>
     </div>
     <div class="stack-item">
       <div class="stack-name">SQL / PostgreSQL</div>
-      <div class="stack-bar-wrap"><div class="stack-bar" style="width:35%"></div><span>Базовый</span></div>
+      <div class="stack-bar-wrap"><div class="stack-bar" style="width:35%"></div><span data-i18n="level-basic">Базовый</span></div>
       <div class="stack-use">SELECT, WHERE, GROUP BY, JOIN</div>
     </div>
     <div class="stack-item">
       <div class="stack-name">Python / pandas</div>
-      <div class="stack-bar-wrap"><div class="stack-bar" style="width:30%"></div><span>Базовый</span></div>
-      <div class="stack-use">ETL, обработка Excel, базовые скрипты</div>
+      <div class="stack-bar-wrap"><div class="stack-bar" style="width:30%"></div><span data-i18n="level-basic">Базовый</span></div>
+      <div class="stack-use" data-i18n="stack-py-use">ETL, обработка Excel, базовые скрипты</div>
     </div>
   </div>
 
   <!-- PROJECT DIAGRAMS -->
   <div class="proj-diagrams">
-    <div class="proj-header-label">Реализованные BI-проекты — архитектура и результаты</div>
+    <div class="proj-header-label" data-i18n="proj-header">Реализованные BI-проекты — архитектура и результаты</div>
 
     <div class="proj-switch">
-      <button class="proj-switch-btn active" data-target="svg-proj-1">Проект 1 — СМР</button>
-      <button class="proj-switch-btn" data-target="svg-proj-2">Проект 2 — ПК-1</button>
+      <button class="proj-switch-btn active" data-target="svg-proj-1" data-i18n="proj-btn1">Проект 1 — СМР</button>
+      <button class="proj-switch-btn" data-target="svg-proj-2" data-i18n="proj-btn2">Проект 2 — ПК-1</button>
     </div>
 
     <div id="svg-proj-1" class="svg-proj">
@@ -454,18 +465,18 @@
   <div class="ana-value">
     <div class="ana-value-item">
       <div class="ana-value-icon">◈</div>
-      <div class="ana-value-title">Инженер + аналитик</div>
-      <div class="ana-value-text">14 лет в строительстве дают понимание процессов изнутри — строю отчётность, которой доверяют</div>
+      <div class="ana-value-title" data-i18n="av1-title">Инженер + аналитик</div>
+      <div class="ana-value-text" data-i18n="av1-text">14 лет в строительстве дают понимание процессов изнутри — строю отчётность, которой доверяют</div>
     </div>
     <div class="ana-value-item">
       <div class="ana-value-icon">◈</div>
-      <div class="ana-value-title">Атомный объект</div>
-      <div class="ana-value-text">Опыт работы на АЭС с максимальными требованиями к точности данных — нулевая толерантность к ошибкам</div>
+      <div class="ana-value-title" data-i18n="av2-title">Атомный объект</div>
+      <div class="ana-value-text" data-i18n="av2-text">Опыт работы на АЭС с максимальными требованиями к точности данных — нулевая толерантность к ошибкам</div>
     </div>
     <div class="ana-value-item">
       <div class="ana-value-icon">◈</div>
-      <div class="ana-value-title">AI-augmented аналитик</div>
-      <div class="ana-value-text">Профессионально интегрирую AI-ассистентов в рабочие процессы — от генерации кода до автоматизации отчётности. Claude, Cursor — часть ежедневной практики</div>
+      <div class="ana-value-title" data-i18n="av3-title">AI-augmented аналитик</div>
+      <div class="ana-value-text" data-i18n="av3-text">Профессионально интегрирую AI-ассистентов в рабочие процессы — от генерации кода до автоматизации отчётности. Claude, Cursor — часть ежедневной практики</div>
     </div>
   </div>
 </section>
@@ -589,35 +600,35 @@
 
 <!-- AI TOOLS -->
 <section class="ai-tools" id="ai-tools">
-  <div class="section-tag">Инструменты</div>
-  <div class="section-title">AI-assisted<br><em>рабочие процессы</em></div>
+  <div class="section-tag" data-i18n="ai-tag">Инструменты</div>
+  <div class="section-title" data-i18n="ai-title">AI-assisted<br><em>рабочие процессы</em></div>
   <div class="ai-grid">
     <div class="ai-card">
-      <div class="ai-tool-name">Claude Code Desktop</div>
-      <div class="ai-tool-desc">Написание скриптов, работа с файлами на сервере напрямую из терминала. Пример: сгенерирован ETL-пайплайн для обработки данных из 11+ источников</div>
+      <div class="ai-tool-name" data-i18n="ai-c1-name">Claude Code Desktop</div>
+      <div class="ai-tool-desc" data-i18n="ai-c1-desc">Написание скриптов, работа с файлами на сервере напрямую из терминала. Пример: сгенерирован ETL-пайплайн для обработки данных из 11+ источников</div>
     </div>
     <div class="ai-card">
-      <div class="ai-tool-name">Claude Code Mobile <span class="ai-tag">iOS</span></div>
-      <div class="ai-tool-desc">Работа с мобильного устройства, синхронизация проекта с удалённым сервером через GitHub</div>
+      <div class="ai-tool-name" data-i18n="ai-c2-name">Claude Code Mobile <span class="ai-tag">iOS</span></div>
+      <div class="ai-tool-desc" data-i18n="ai-c2-desc">Работа с мобильного устройства, синхронизация проекта с удалённым сервером через GitHub</div>
     </div>
     <div class="ai-card">
-      <div class="ai-tool-name">Claude Connect <span class="ai-tag">MCP</span></div>
-      <div class="ai-tool-desc">Интеграции с Gmail, Google Drive, Google Calendar — выгрузка результатов в облако, отправка по email</div>
+      <div class="ai-tool-name" data-i18n="ai-c3-name">Claude Connect <span class="ai-tag">MCP</span></div>
+      <div class="ai-tool-desc" data-i18n="ai-c3-desc">Интеграции с Gmail, Google Drive, Google Calendar — выгрузка результатов в облако, отправка по email</div>
     </div>
     <div class="ai-card">
-      <div class="ai-tool-name">GitHub</div>
-      <div class="ai-tool-desc">Хранение и версионирование проектов: ветки, коммиты, синхронизация между устройствами</div>
+      <div class="ai-tool-name" data-i18n="ai-c4-name">GitHub</div>
+      <div class="ai-tool-desc" data-i18n="ai-c4-desc">Хранение и версионирование проектов: ветки, коммиты, синхронизация между устройствами</div>
     </div>
     <div class="ai-card">
-      <div class="ai-tool-name">Python · Email-скрипт</div>
-      <div class="ai-tool-desc">Автономная отправка файлов по email без UI. Пример: еженедельная выгрузка отчётов запускается по расписанию без участия пользователя</div>
+      <div class="ai-tool-name" data-i18n="ai-c5-name">Python · Email-скрипт</div>
+      <div class="ai-tool-desc" data-i18n="ai-c5-desc">Автономная отправка файлов по email без UI. Пример: еженедельная выгрузка отчётов запускается по расписанию без участия пользователя</div>
     </div>
     <div class="ai-card">
-      <div class="ai-tool-name">Cursor / Copilot</div>
-      <div class="ai-tool-desc">AI-ассистированное написание кода, генерация DAX-формул и Power Query скриптов</div>
+      <div class="ai-tool-name" data-i18n="ai-c6-name">Cursor / Copilot</div>
+      <div class="ai-tool-desc" data-i18n="ai-c6-desc">AI-ассистированное написание кода, генерация DAX-формул и Power Query скриптов</div>
     </div>
   </div>
-  <div class="ai-quote">«Построил AI-assisted рабочие процессы с нуля: ETL-пайплайн на 11+ источников, генерация DAX-формул и M-скриптов, автоматическая выгрузка отчётов по расписанию, управление версиями через GitHub — всё без команды разработчиков»</div>
+  <div class="ai-quote" data-i18n="ai-quote">«Построил AI-assisted рабочие процессы с нуля: ETL-пайплайн на 11+ источников, генерация DAX-формул и M-скриптов, автоматическая выгрузка отчётов по расписанию, управление версиями через GitHub — всё без команды разработчиков»</div>
 </section>
 <style>
   .ai-tools { background: var(--bg); }
@@ -635,63 +646,63 @@
 
 <!-- KEY OBJECTS -->
 <section class="objects" id="objects">
-  <div class="section-tag">Ключевые объекты</div>
-  <div class="section-title">Проекты,<br><em>в которых участвовал</em></div>
+  <div class="section-tag" data-i18n="obj-tag">Ключевые объекты</div>
+  <div class="section-title" data-i18n="obj-title">Проекты,<br><em>в которых участвовал</em></div>
   <div class="obj-grid">
     <div class="obj-card">
-      <div class="obj-year">2024 — н.в.</div>
-      <div class="obj-name">АЭС «Аккую», Турция</div>
-      <div class="obj-desc">ETL-процессы: объединение данных из 11+ источников КС-6а, ускорение обработки в 10 раз. Power BI для 25 пользователей; подготовка итоговых управленческих отчётов — в 5–6 раз быстрее.</div>
+      <div class="obj-year" data-i18n="obj1-year">2024 — н.в.</div>
+      <div class="obj-name" data-i18n="obj1-name">АЭС «Аккую», Турция</div>
+      <div class="obj-desc" data-i18n="obj1-desc">ETL-процессы: объединение данных из 11+ источников КС-6а, ускорение обработки в 10 раз. Power BI для 25 пользователей; подготовка итоговых управленческих отчётов — в 5–6 раз быстрее.</div>
     </div>
     <div class="obj-card">
       <div class="obj-year">2022–2024</div>
-      <div class="obj-name">Тоннели и трубопроводы АЭС «Аккую»</div>
-      <div class="obj-desc">Результат: комплект ППР для 3 типов конструкций (тоннели, SUBOR, ВЗиС), 3D-модели в Revit переданы в производство. Разделительные ведомости позволили защитить объёмы при сдаче.</div>
+      <div class="obj-name" data-i18n="obj2-name">Тоннели и трубопроводы АЭС «Аккую»</div>
+      <div class="obj-desc" data-i18n="obj2-desc">Результат: комплект ППР для 3 типов конструкций (тоннели, SUBOR, ВЗиС), 3D-модели в Revit переданы в производство. Разделительные ведомости позволили защитить объёмы при сдаче.</div>
     </div>
     <div class="obj-card">
       <div class="obj-year">2019–2021</div>
-      <div class="obj-name">Мостовой переход через р. Обь, Новосибирск</div>
-      <div class="obj-desc">Разработка РД по инженерным системам. Сопровождение ИД по 7 разделам: трамвайные пути, контактная сеть, ВОЛС, электроснабжение.</div>
+      <div class="obj-name" data-i18n="obj3-name">Мостовой переход через р. Обь, Новосибирск</div>
+      <div class="obj-desc" data-i18n="obj3-desc">Разработка РД по инженерным системам. Сопровождение ИД по 7 разделам: трамвайные пути, контактная сеть, ВОЛС, электроснабжение.</div>
     </div>
     <div class="obj-card">
       <div class="obj-year">2017–2019</div>
-      <div class="obj-name">ГПЗ «Газпром», г. Оренбург</div>
-      <div class="obj-desc">Расчёт бюджета этапов, разработка ППР и ИД по системе оповещения и громкой связи.</div>
+      <div class="obj-name" data-i18n="obj4-name">ГПЗ «Газпром», г. Оренбург</div>
+      <div class="obj-desc" data-i18n="obj4-desc">Расчёт бюджета этапов, разработка ППР и ИД по системе оповещения и громкой связи.</div>
     </div>
     <div class="obj-card">
       <div class="obj-year">2016–2018</div>
-      <div class="obj-name">Газовые промыслы Медвежьего НГКМ</div>
-      <div class="obj-desc">Разработка инструкций по гидравлическим и пневматическим испытаниям, ППР и ИД по системам ВОЛС, АСУ ТП, СПД, электроснабжения.</div>
+      <div class="obj-name" data-i18n="obj5-name">Газовые промыслы Медвежьего НГКМ</div>
+      <div class="obj-desc" data-i18n="obj5-desc">Разработка инструкций по гидравлическим и пневматическим испытаниям, ППР и ИД по системам ВОЛС, АСУ ТП, СПД, электроснабжения.</div>
     </div>
     <div class="obj-card">
       <div class="obj-year">2015</div>
-      <div class="obj-name">Останкинская башня, Москва</div>
-      <div class="obj-desc">Система контроля величины натяжения канатной арматуры конструкции башни — уникальный объект культурного наследия.</div>
+      <div class="obj-name" data-i18n="obj6-name">Останкинская башня, Москва</div>
+      <div class="obj-desc" data-i18n="obj6-desc">Система контроля величины натяжения канатной арматуры конструкции башни — уникальный объект культурного наследия.</div>
     </div>
   </div>
 </section>
 
 <!-- EDUCATION -->
 <section class="education" id="education">
-  <div class="section-tag">Образование</div>
-  <div class="section-title">Академическая<br><em>подготовка</em></div>
+  <div class="section-tag" data-i18n="edu-tag">Образование</div>
+  <div class="section-title" data-i18n="edu-title">Академическая<br><em>подготовка</em></div>
   <div class="edu-grid">
     <div class="edu-item">
-      <div class="edu-date"><strong>2012</strong>Высшее</div>
+      <div class="edu-date" data-i18n="edu1-date"><strong>2012</strong>Высшее</div>
       <div class="edu-line"></div>
       <div class="edu-content">
-        <div class="edu-degree">Специалист</div>
-        <div class="edu-institution">ФГБОУ ВПО «Оренбургский государственный университет»</div>
-        <div class="edu-spec">ФИТ · Вычислительные машины, комплексы, системы и сети</div>
+        <div class="edu-degree" data-i18n="edu1-degree">Специалист</div>
+        <div class="edu-institution" data-i18n="edu1-inst">ФГБОУ ВПО «Оренбургский государственный университет»</div>
+        <div class="edu-spec" data-i18n="edu-spec">ФИТ · Вычислительные машины, комплексы, системы и сети</div>
       </div>
     </div>
     <div class="edu-item">
-      <div class="edu-date"><strong>2008</strong>СПО</div>
+      <div class="edu-date" data-i18n="edu2-date"><strong>2008</strong>СПО</div>
       <div class="edu-line"></div>
       <div class="edu-content">
-        <div class="edu-degree">Специалист среднего звена</div>
-        <div class="edu-institution">ГОУ СПО «Оренбургский колледж статистики, экономики и информатики»</div>
-        <div class="edu-spec">ФИТ · Вычислительные машины, комплексы, системы и сети</div>
+        <div class="edu-degree" data-i18n="edu2-degree">Специалист среднего звена</div>
+        <div class="edu-institution" data-i18n="edu2-inst">ГОУ СПО «Оренбургский колледж статистики, экономики и информатики»</div>
+        <div class="edu-spec" data-i18n="edu-spec">ФИТ · Вычислительные машины, комплексы, системы и сети</div>
       </div>
     </div>
   </div>
@@ -700,22 +711,22 @@
 <!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="contact-inner">
-    <div class="section-tag">Контакты</div>
-    <div class="section-title" style="margin-bottom:20px">Открыт<br><em>к предложениям</em></div>
-    <p class="contact-subtitle">Рассматриваю позиции BI-аналитика в строительстве, энергетике или промышленности. Готов к удалённой работе. Офлайн в Турции.</p>
+    <div class="section-tag" data-i18n="contact-tag">Контакты</div>
+    <div class="section-title" style="margin-bottom:20px" data-i18n="contact-title">Открыт<br><em>к предложениям</em></div>
+    <p class="contact-subtitle" data-i18n="contact-subtitle">Рассматриваю позиции BI-аналитика в строительстве, энергетике или промышленности. Готов к удалённой работе. Офлайн в Турции.</p>
     <div class="contact-links">
       <a href="tel:+79878515390" class="contact-link"><span class="contact-link-icon">☎</span>+7 (987) 851-53-90</a>
       <a href="https://wa.me/79878515390" class="contact-link" target="_blank"><span class="contact-link-icon">💬</span>WhatsApp</a>
       <a href="mailto:art56000@yandex.ru" class="contact-link"><span class="contact-link-icon">✉</span>art56000@yandex.ru</a>
       <a href="https://github.com/brubon4" class="contact-link" target="_blank"><span class="contact-link-icon" style="line-height:0"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013-.4c1.02.005 2.04.14 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.49 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58C20.57 21.8 24 17.3 24 12 24 5.37 18.63 0 12 0z"/></svg></span>GitHub</a>
     </div>
-    <div class="contact-avail"><span></span>Открыт к новым предложениям</div>
+    <div class="contact-avail"><span></span><span data-i18n="contact-avail">Открыт к новым предложениям</span></div>
   </div>
 </section>
 
 <footer>
-  <div>© 2026 Аминский Сергей Сергеевич</div>
-  <div>BI-аналитик</div>
+  <div data-i18n="footer-copy">© 2026 Аминский Сергей Сергеевич</div>
+  <div data-i18n="footer-role">BI-аналитик</div>
 </footer>
 
 <style>
@@ -866,6 +877,185 @@
   document.querySelectorAll('.skill-tag, .section-tag').forEach(function(el){
     el.style.setProperty('--sd', (Math.random() * 4).toFixed(2) + 's');
   });
+})();
+</script>
+<script>
+(function(){
+var T={
+'nav-logo':{ru:'С. Аминский',en:'S. Aminsky'},
+'nav-about':{ru:'Обо мне',en:'About'},
+'nav-exp':{ru:'Опыт',en:'Experience'},
+'nav-skills':{ru:'Навыки',en:'Skills'},
+'nav-analytics':{ru:'Аналитика',en:'Analytics'},
+'nav-ai':{ru:'AI-инструменты',en:'AI Tools'},
+'nav-objects':{ru:'Проекты',en:'Projects'},
+'nav-education':{ru:'Образование',en:'Education'},
+'nav-contact':{ru:'Контакты',en:'Contact'},
+'hero-tag':{ru:'BI-аналитик в строительстве',en:'BI Analyst in Construction'},
+'hero-role':{ru:'Data Analyst · Power BI · 14 лет опыта',en:'Data Analyst · Power BI · 14 years experience'},
+'hero-desc':{ru:'Превращаю сырые производственные данные в управляемые аналитические системы. Power BI · Power Query (M) · Pivot (DAX) — на объектах атомной отрасли.',en:'I turn raw production data into manageable analytical systems. Power BI · Power Query (M) · Pivot (DAX) — deployed at nuclear industry projects.'},
+'stat-years':{ru:'лет опыта',en:'years experience'},
+'stat-speed':{ru:'ускорение отчётности',en:'reporting speed-up'},
+'btn-contact':{ru:'Связаться',en:'Contact me'},
+'btn-exp':{ru:'Смотреть опыт',en:'View experience'},
+'about-tag':{ru:'Обо мне',en:'About'},
+'about-title':{ru:'От инженера<br><em>до аналитика данных</em>',en:'From engineer<br><em>to data analyst</em>'},
+'about-p1':{ru:'<strong>14 лет в строительстве и аналитике</strong> — от проектировщика слаботочных систем до BI-аналитика на атомной стройке. Понимаю процессы изнутри и строю отчётность, которой доверяют.',en:'<strong>14 years in construction and analytics</strong> — from low-voltage systems designer to BI analyst on a nuclear construction site. I understand processes from the inside and build reporting that people trust.'},
+'about-p2':{ru:'Сейчас — АЭС «Аккую», Турция. Автоматизирую обработку производственных и финансовых данных через <strong>Power BI, Power Query, DAX</strong>. Ускорение подготовки — в 10 раз.',en:'Currently — Akkuyu NPP, Turkey. Automating production and financial data processing via <strong>Power BI, Power Query, DAX</strong>. 10× faster reporting.'},
+'exp-tag':{ru:'Опыт работы',en:'Work Experience'},
+'exp-title':{ru:'<em>14 лет</em><br>в отрасли',en:'<em>14 years</em><br>in the industry'},
+'exp1-date':{ru:'<strong>окт 2024 — н.в.</strong>1 год 7 мес.',en:'<strong>Oct 2024 — present</strong>1 yr 7 mo.'},
+'exp1-role':{ru:'Аналитик данных / Главный специалист',en:'Data Analyst / Senior Specialist'},
+'exp1-obj':{ru:'АЭС «Аккую», Турция',en:'Akkuyu NPP, Turkey'},
+'exp1-b1':{ru:'ETL-процессы, Power BI, Power Query (M), DAX, VBA — единая аналитическая база для всего проекта',en:'ETL processes, Power BI, Power Query (M), DAX, VBA — unified analytics platform for the entire project'},
+'exp1-b2':{ru:'Ускорение подготовки — <strong>в 10 раз</strong>',en:'Reporting preparation — <strong>10× faster</strong>'},
+'exp1-b3':{ru:'Валидация физических объёмов субподрядчиков, контроль данных КС-6а — выявление расхождений до подписания актов, защита бюджета проекта',en:'Validation of subcontractor volumes, KS-6a data control — identifying discrepancies before signing acts, protecting project budget'},
+'exp2-date':{ru:'<strong>окт 2022 — сен 2024</strong>2 года',en:'<strong>Oct 2022 — Sep 2024</strong>2 years'},
+'exp2-role':{ru:'Главный специалист / Аналитик инженерных данных',en:'Senior Specialist / Engineering Data Analyst'},
+'exp2-obj':{ru:'АЭС «Аккую», Турция — ж/б тоннели, трубопроводы SUBOR',en:'Akkuyu NPP, Turkey — RC tunnels, SUBOR pipelines'},
+'exp2-b1':{ru:'Анализ РД, разработка разделительных ведомостей, сметное сопровождение',en:'Design documentation analysis, scope separation schedules, cost estimation support'},
+'exp2-b2':{ru:'<strong>3D-моделирование</strong> ж/б тоннелей (Revit), координация данных между отделами',en:'<strong>3D modeling</strong> of RC tunnels (Revit), cross-department data coordination'},
+'exp2-b3':{ru:'Разработка ППР: тоннели, трубопроводы SUBOR, здание ВЗиС',en:'Work execution plans: tunnels, SUBOR pipelines, water intake building'},
+'exp3-date':{ru:'<strong>июл 2015 — окт 2022</strong>7 лет 4 мес.',en:'<strong>Jul 2015 — Oct 2022</strong>7 yr 4 mo.'},
+'exp3-company':{ru:'АО «Индивидуальные бизнес решения» · Москва',en:'IBR JSC · Moscow'},
+'exp3-role':{ru:'Ведущий инженер ПТО / Инженер-аналитик проектов',en:'Lead PTO Engineer / Project Data Analyst'},
+'exp3-obj':{ru:'Транспортная, промышленная, нефтегазовая инфраструктура',en:'Transport, industrial, oil & gas infrastructure'},
+'exp3-b1':{ru:'Управление отделом ПТО — <strong>6 человек</strong>; РД, ППР, ИД для нефтегазовых и транспортных объектов',en:'Managing PTO department — <strong>6 people</strong>; design docs, WEP, as-built for oil & gas and transport projects'},
+'exp3-b2':{ru:'Финансовые показатели проектов: бюджет, отклонения факта от плана, защита объёмов',en:'Project financials: budget, actual vs plan variances, volume protection'},
+'exp3-b3':{ru:'Мост через р. Обь (Новосибирск) · Обход Хабаровска · ГПЗ Оренбург · промыслы «Медвежье»',en:'Ob River Bridge (Novosibirsk) · Khabarovsk Bypass · Orenburg GPP · Medvezhye fields'},
+'exp4-date':{ru:'<strong>фев 2014 — июл 2015</strong>1 год 6 мес.',en:'<strong>Feb 2014 — Jul 2015</strong>1 yr 6 mo.'},
+'exp4-company':{ru:'ООО «Комдиагностика» · Москва',en:'Komdiagnostika LLC · Moscow'},
+'exp4-role':{ru:'Инженер-проектировщик / Аналитик технических систем',en:'Design Engineer / Technical Systems Analyst'},
+'exp4-obj':{ru:'Нефтегаз, нефтехимия, энергетика',en:'Oil & gas, petrochemicals, energy'},
+'exp4-b1':{ru:'Системы вибромониторинга и диагностики для нефтегаза и энергетики',en:'Vibration monitoring and diagnostics systems for oil & gas and energy'},
+'exp4-b2':{ru:'<strong>Останкинская башня</strong> — система контроля натяжения канатной арматуры',en:'<strong>Ostankino Tower</strong> — cable reinforcement tension monitoring system'},
+'exp5-date':{ru:'<strong>мар 2013 — фев 2014</strong>1 год',en:'<strong>Mar 2013 — Feb 2014</strong>1 year'},
+'exp5-company':{ru:'АО «ОСИ-Системный интегратор» · Оренбург',en:'OSI Systems Integrator JSC · Orenburg'},
+'exp5-role':{ru:'Инженер-проектировщик слаботочных систем',en:'Low-voltage Systems Design Engineer'},
+'exp5-obj':{ru:'Безопасность, связь, автоматизация',en:'Security, communications, automation'},
+'exp5-b1':{ru:'РД по системам АПС, СКУД, СКС, СОТ · объекты «Газпрома» в Оренбурге',en:'Design docs for fire alarm, ACS, SCS, CCTV · Gazprom facilities in Orenburg'},
+'exp6-date':{ru:'<strong>июн 2012 — мар 2013</strong>10 мес.',en:'<strong>Jun 2012 — Mar 2013</strong>10 mo.'},
+'exp6-company':{ru:'ООО «Инжиниринг-проект» · Оренбург',en:'Engineering-Project LLC · Orenburg'},
+'exp6-role':{ru:'Инженер-проектировщик слаботочных систем',en:'Low-voltage Systems Design Engineer'},
+'exp6-obj':{ru:'Системы безопасности и связи',en:'Security and communication systems'},
+'exp6-b1':{ru:'Проектирование слаботочных систем по ГОСТ 21.1101-2013; разработка РД по системам безопасности и связи',en:'Low-voltage systems design per GOST 21.1101-2013; design docs for security and communication systems'},
+'exp6-b2':{ru:'Составление технических заданий (ТЗ) и технических условий (ТУ); анализ требований Заказчика',en:'Preparing technical specifications (TS) and technical conditions (TC); client requirements analysis'},
+'exp6-b3':{ru:'<strong>ПО «Стрела»</strong>, Оренбург (2012) — РД по системам АПС, СОУЭ, СКЗ',en:'<strong>Strela facility</strong>, Orenburg (2012) — design docs for fire alarm, SOUE, corrosion protection'},
+'exp6-b4':{ru:'<strong>НПЗ «Газпром нефтехим Салавату»</strong> (2012) — РД по системам ОС, СКУД, СОТ, СС',en:'<strong>Gazprom Neftekhim Salavat refinery</strong> (2012) — design docs for security, ACS, CCTV, communications'}
+};
+window._T=T;
+})();
+</script>
+<script>
+(function(){
+var T2={
+'skills-tag':{ru:'Навыки',en:'Skills'},
+'skills-title':{ru:'Инструменты<br><em>и компетенции</em>',en:'Tools<br><em>and competencies</em>'},
+'sg1-title':{ru:'BI и аналитика данных',en:'BI & Data Analytics'},
+'sg1-t7':{ru:'Аналитические исследования',en:'Analytical research'},
+'sg2-title':{ru:'Инженерия и строительство',en:'Engineering & Construction'},
+'sg2-t3':{ru:'РД / ИД / ППР',en:'Design / As-built / WEP'},
+'sg2-t4':{ru:'Сметная документация',en:'Cost estimation docs'},
+'sg2-t6':{ru:'3D-моделирование',en:'3D modeling'},
+'sg3-title':{ru:'Управление и коммуникация',en:'Management & Communication'},
+'sg3-t1':{ru:'Управление отделом (6 чел.)',en:'Team management (6 people)'},
+'sg3-t2':{ru:'Организационные навыки',en:'Organizational skills'},
+'sg3-t3':{ru:'Техническая переписка',en:'Technical correspondence'},
+'sg3-t4':{ru:'Русский (родной)',en:'Russian (native)'},
+'sg4-title':{ru:'AI-augmented аналитик',en:'AI-augmented analyst'},
+'sg4-t3':{ru:'Промпт-инжиниринг',en:'Prompt engineering'},
+'sg4-t4':{ru:'Генерация кода и DAX',en:'Code & DAX generation'},
+'sg4-t5':{ru:'Автоматизация рутины',en:'Routine automation'},
+'sg4-t6':{ru:'ETL через AI',en:'ETL via AI'},
+'sg4-t8':{ru:'AI-ассистируемый анализ',en:'AI-assisted analysis'},
+'sg4-note':{ru:'AI-инструменты позволяют мне закрывать задачи, которые раньше требовали нескольких исполнителей',en:'AI tools allow me to handle tasks that previously required multiple people'},
+'ana-tag':{ru:'Аналитика и разработка',en:'Analytics & Development'},
+'ana-title':{ru:'Данные как<br><em>инструмент управления</em>',en:'Data as<br><em>a management tool</em>'},
+'stack-col1':{ru:'Инструмент',en:'Tool'},
+'stack-col2':{ru:'Уровень',en:'Level'},
+'stack-col3':{ru:'Применение',en:'Application'},
+'level-basic':{ru:'Базовый',en:'Basic'},
+'stack-pbi-use':{ru:'Дашборды, матрицы, слайсеры, публикация',en:'Dashboards, matrices, slicers, publishing'},
+'stack-pq-use':{ru:'ETL, очистка, свёртывание, кодогенерация KKS',en:'ETL, cleaning, pivoting, KKS code generation'},
+'stack-dax-use':{ru:'CALCULATE, FILTER, CONTAINSSTRING, COALESCE, VAR, SUMX · без time intelligence',en:'CALCULATE, FILTER, CONTAINSSTRING, COALESCE, VAR, SUMX · no time intelligence'},
+'stack-excel-use':{ru:'ETL, сводные таблицы, формулы с множественными условиями',en:'ETL, pivot tables, multi-condition formulas'},
+'stack-vba-use':{ru:'Автоматизация рутинных операций',en:'Routine operations automation'},
+'stack-py-use':{ru:'ETL, обработка Excel, базовые скрипты',en:'ETL, Excel processing, basic scripts'},
+'proj-header':{ru:'Реализованные BI-проекты — архитектура и результаты',en:'Implemented BI projects — architecture and results'},
+'proj-btn1':{ru:'Проект 1 — СМР',en:'Project 1 — Construction'},
+'proj-btn2':{ru:'Проект 2 — ПК-1',en:'Project 2 — PC-1'},
+'av1-title':{ru:'Инженер + аналитик',en:'Engineer + analyst'},
+'av1-text':{ru:'14 лет в строительстве дают понимание процессов изнутри — строю отчётность, которой доверяют',en:'14 years in construction provide insider process knowledge — I build reporting that people trust'},
+'av2-title':{ru:'Атомный объект',en:'Nuclear facility'},
+'av2-text':{ru:'Опыт работы на АЭС с максимальными требованиями к точности данных — нулевая толерантность к ошибкам',en:'Experience at NPP with maximum data accuracy requirements — zero tolerance for errors'},
+'av3-title':{ru:'AI-augmented аналитик',en:'AI-augmented analyst'},
+'av3-text':{ru:'Профессионально интегрирую AI-ассистентов в рабочие процессы — от генерации кода до автоматизации отчётности. Claude, Cursor — часть ежедневной практики',en:'Professionally integrating AI assistants into workflows — from code generation to report automation. Claude, Cursor are part of daily practice'},
+'ai-tag':{ru:'Инструменты',en:'Tools'},
+'ai-title':{ru:'AI-assisted<br><em>рабочие процессы</em>',en:'AI-assisted<br><em>workflows</em>'},
+'ai-c1-name':{ru:'Claude Code Desktop',en:'Claude Code Desktop'},
+'ai-c1-desc':{ru:'Написание скриптов, работа с файлами на сервере напрямую из терминала. Пример: сгенерирован ETL-пайплайн для обработки данных из 11+ источников',en:'Script writing, working with server files directly from terminal. Example: generated ETL pipeline for data from 11+ sources'},
+'ai-c2-name':{ru:'Claude Code Mobile <span class="ai-tag">iOS</span>',en:'Claude Code Mobile <span class="ai-tag">iOS</span>'},
+'ai-c2-desc':{ru:'Работа с мобильного устройства, синхронизация проекта с удалённым сервером через GitHub',en:'Working from a mobile device, syncing the project with a remote server via GitHub'},
+'ai-c3-name':{ru:'Claude Connect <span class="ai-tag">MCP</span>',en:'Claude Connect <span class="ai-tag">MCP</span>'},
+'ai-c3-desc':{ru:'Интеграции с Gmail, Google Drive, Google Calendar — выгрузка результатов в облако, отправка по email',en:'Integrations with Gmail, Google Drive, Google Calendar — export to cloud, send by email'},
+'ai-c4-name':{ru:'GitHub',en:'GitHub'},
+'ai-c4-desc':{ru:'Хранение и версионирование проектов: ветки, коммиты, синхронизация между устройствами',en:'Project storage and versioning: branches, commits, cross-device sync'},
+'ai-c5-name':{ru:'Python · Email-скрипт',en:'Python · Email script'},
+'ai-c5-desc':{ru:'Автономная отправка файлов по email без UI. Пример: еженедельная выгрузка отчётов запускается по расписанию без участия пользователя',en:'Autonomous file sending by email without UI. Example: weekly report export runs on schedule without user involvement'},
+'ai-c6-name':{ru:'Cursor / Copilot',en:'Cursor / Copilot'},
+'ai-c6-desc':{ru:'AI-ассистированное написание кода, генерация DAX-формул и Power Query скриптов',en:'AI-assisted code writing, DAX formula and Power Query script generation'},
+'ai-quote':{ru:'«Построил AI-assisted рабочие процессы с нуля: ETL-пайплайн на 11+ источников, генерация DAX-формул и M-скриптов, автоматическая выгрузка отчётов по расписанию, управление версиями через GitHub — всё без команды разработчиков»',en:'"Built AI-assisted workflows from scratch: ETL pipeline for 11+ sources, DAX formula and M-script generation, automated scheduled report export, version control via GitHub — all without a development team"'},
+'obj-tag':{ru:'Ключевые объекты',en:'Key Projects'},
+'obj-title':{ru:'Проекты,<br><em>в которых участвовал</em>',en:'Projects<br><em>I participated in</em>'},
+'obj1-year':{ru:'2024 — н.в.',en:'2024 — present'},
+'obj1-name':{ru:'АЭС «Аккую», Турция',en:'Akkuyu NPP, Turkey'},
+'obj1-desc':{ru:'ETL-процессы: объединение данных из 11+ источников КС-6а, ускорение обработки в 10 раз. Power BI для 25 пользователей; подготовка итоговых управленческих отчётов — в 5–6 раз быстрее.',en:'ETL processes: merging data from 11+ KS-6a sources, 10× speed-up. Power BI for 25 users; final management reports — 5–6× faster.'},
+'obj2-name':{ru:'Тоннели и трубопроводы АЭС «Аккую»',en:'Tunnels and pipelines at Akkuyu NPP'},
+'obj2-desc':{ru:'Результат: комплект ППР для 3 типов конструкций (тоннели, SUBOR, ВЗиС), 3D-модели в Revit переданы в производство. Разделительные ведомости позволили защитить объёмы при сдаче.',en:'Result: WEP package for 3 structure types (tunnels, SUBOR, WIS), Revit 3D models handed to production. Scope schedules protected volumes at handover.'},
+'obj3-name':{ru:'Мостовой переход через р. Обь, Новосибирск',en:'Ob River Bridge Crossing, Novosibirsk'},
+'obj3-desc':{ru:'Разработка РД по инженерным системам. Сопровождение ИД по 7 разделам: трамвайные пути, контактная сеть, ВОЛС, электроснабжение.',en:'Design docs for engineering systems. As-built support across 7 sections: tram tracks, contact network, fiber optics, power supply.'},
+'obj4-name':{ru:'ГПЗ «Газпром», г. Оренбург',en:'Gazprom GPP, Orenburg'},
+'obj4-desc':{ru:'Расчёт бюджета этапов, разработка ППР и ИД по системе оповещения и громкой связи.',en:'Phase budget calculation, WEP and as-built docs for public address and PA systems.'},
+'obj5-name':{ru:'Газовые промыслы Медвежьего НГКМ',en:'Medvezhye gas field facilities'},
+'obj5-desc':{ru:'Разработка инструкций по гидравлическим и пневматическим испытаниям, ППР и ИД по системам ВОЛС, АСУ ТП, СПД, электроснабжения.',en:'Hydraulic and pneumatic test procedures, WEP and as-built docs for fiber optics, SCADA, data networks, power supply.'},
+'obj6-name':{ru:'Останкинская башня, Москва',en:'Ostankino Tower, Moscow'},
+'obj6-desc':{ru:'Система контроля величины натяжения канатной арматуры конструкции башни — уникальный объект культурного наследия.',en:'Cable reinforcement tension monitoring system — a unique cultural heritage landmark.'},
+'edu-tag':{ru:'Образование',en:'Education'},
+'edu-title':{ru:'Академическая<br><em>подготовка</em>',en:'Academic<br><em>background</em>'},
+'edu1-date':{ru:'<strong>2012</strong>Высшее',en:'<strong>2012</strong>Higher'},
+'edu1-degree':{ru:'Специалист',en:'Specialist degree'},
+'edu1-inst':{ru:'ФГБОУ ВПО «Оренбургский государственный университет»',en:'Orenburg State University'},
+'edu-spec':{ru:'ФИТ · Вычислительные машины, комплексы, системы и сети',en:'FIT · Computer Machines, Complexes, Systems and Networks'},
+'edu2-date':{ru:'<strong>2008</strong>СПО',en:'<strong>2008</strong>Vocational'},
+'edu2-degree':{ru:'Специалист среднего звена',en:'Associate specialist'},
+'edu2-inst':{ru:'ГОУ СПО «Оренбургский колледж статистики, экономики и информатики»',en:'Orenburg College of Statistics, Economics and Informatics'},
+'contact-tag':{ru:'Контакты',en:'Contact'},
+'contact-title':{ru:'Открыт<br><em>к предложениям</em>',en:'Open<br><em>to opportunities</em>'},
+'contact-subtitle':{ru:'Рассматриваю позиции BI-аналитика в строительстве, энергетике или промышленности. Готов к удалённой работе. Офлайн в Турции.',en:'Considering BI analyst positions in construction, energy, or industry. Open to remote work. Based in Turkey.'},
+'contact-avail':{ru:'Открыт к новым предложениям',en:'Open to new opportunities'},
+'footer-copy':{ru:'© 2026 Аминский Сергей Сергеевич',en:'© 2026 Sergey Aminsky'},
+'footer-role':{ru:'BI-аналитик',en:'BI Analyst'}
+};
+Object.assign(window._T, T2);
+
+function applyLang(lang){
+  document.documentElement.lang=lang;
+  document.title=lang==='en'?'Sergey Aminsky — BI Analyst':'Аминский Сергей — BI-аналитик';
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var k=el.getAttribute('data-i18n');
+    if(window._T[k]&&window._T[k][lang]!==undefined) el.innerHTML=window._T[k][lang];
+  });
+  document.querySelectorAll('.lang-btn').forEach(function(b){
+    b.classList.toggle('active',b.getAttribute('data-lang')===lang);
+  });
+  try{localStorage.setItem('lang',lang);}catch(e){}
+}
+
+document.querySelectorAll('.lang-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){ applyLang(this.getAttribute('data-lang')); });
+});
+
+try{var saved=localStorage.getItem('lang'); if(saved&&saved!=='ru') applyLang(saved);}catch(e){}
 })();
 </script>
 </body></html>
