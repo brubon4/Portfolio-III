@@ -40,7 +40,7 @@
     transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
   }
   nav.nav-hidden { transform: translateY(-100%); }
-  .nav-logo { font-size: 14px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
+  .nav-logo { font-size: 14px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); text-decoration: none; }
   .nav-links { display: flex; gap: 36px; }
   .nav-links a { font-size: 13px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
   .nav-links a:hover { color: var(--text); }
@@ -168,7 +168,7 @@
 <body>
 
 <nav>
-  <div class="nav-logo" data-i18n="nav-logo">С. Аминский</div>
+  <a href="#home" class="nav-logo" data-i18n="nav-logo">С. Аминский</a>
   <div class="nav-links">
     <a href="#about" data-i18n="nav-about">Обо мне</a>
     <a href="#experience" data-i18n="nav-exp">Опыт</a>
