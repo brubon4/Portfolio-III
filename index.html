@@ -146,6 +146,8 @@
 
   .lang-switch { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
   .lang-sep { color: var(--border); font-size: 12px; }
+  .nav-tg-link { display: flex; align-items: center; color: var(--text-dim); text-decoration: none; transition: color 0.2s; padding: 4px 2px; line-height: 0; }
+  .nav-tg-link:hover { color: var(--accent); }
   .lang-btn { background: none; border: none; cursor: pointer; font-family: var(--font); font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); padding: 4px 2px; transition: color 0.2s; line-height: 1; }
   .lang-btn.active { color: var(--accent); }
   .lang-btn:hover:not(.active) { color: var(--text); }
@@ -188,6 +190,8 @@
     <a href="#contact" data-i18n="nav-contact">Контакты</a>
   </div>
   <div class="lang-switch">
+    <a href="https://t.me/data_stroy" class="nav-tg-link" target="_blank" aria-label="Telegram канал"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.94 8.19-1.97 9.28c-.14.64-.52.8-1.06.5l-2.93-2.16-1.41 1.36c-.16.16-.29.29-.59.29l.21-2.99 5.42-4.89c.24-.21-.05-.33-.36-.12L7.08 14.4l-2.87-.9c-.62-.19-.63-.62.13-.92l11.24-4.33c.52-.19.97.13.36.94z"/></svg></a>
+    <span class="lang-sep">|</span>
     <button class="lang-btn active" data-lang="ru">RU</button>
     <span class="lang-sep">|</span>
     <button class="lang-btn" data-lang="en">EN</button>
